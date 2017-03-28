@@ -5,17 +5,17 @@ class AppLeft extends Component {
     render() {
         return (
             
-            <div className="App-left">
+            <div className="app-left">
                 
-                <div className="App-user-counter">
+                <div className="app-user-counter">
                     <p>COUNTER: [COUNTER]</p>
                 </div>
 
-                <div className="App-user-list">
+                <div className="app-user-list">
                     <p>USER LIST: [USERS]</p>
                 </div>
 
-                <div className="App-user-detail">
+                <div className="app-user-detail">
                     <p>USER DETAIL: [USER]</p>
                 </div>
 

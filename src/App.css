@@ -5,7 +5,7 @@
 }
 
 
-.App-left {
+.app-left {
 	background-color: gray;
 	width: 20%;
 	height: 100%;
@@ -13,7 +13,7 @@
 	color: white;
 }
 
-.App-left > div {
+.app-left > div {
 	background-color: #222;
 	height: 33.33%;
 	width: 100%;
@@ -21,7 +21,7 @@
  
 }
 
-.App-right {
+.app-right {
 	background-color: green;
 	margin-left: 20%;
 	width: 80%;
@@ -29,7 +29,7 @@
 	position: absolute;
 }
 
-.App-navbar {
+.app-navbar {
 	background-color: blue;
 	width: 100%;
 	height: 20%;
@@ -38,7 +38,7 @@
 }
 
 
-.App-user-grid {
+.app-user-grid {
 	background-color: yellow;
 	width: 100%;
 	height: 80%;
