@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
-import UserGrid from './AppUserGridComponents/UserGrid.js'
-
+import UserGrid from './MainComponents/UserGrid.js'
+import Toolbar from './ToolbarComponents/Toolbar.js'
 
 class AppRight extends Component {
     render() {
         return (
-            
+
             <div className="app-right">
-                
+
                 <div className="app-navbar">
                     <p> app-top-menu </p>
+                    <Toolbar />
                 </div>
 
                 <div className="app-user-grid">
@@ -18,7 +19,7 @@ class AppRight extends Component {
                     <UserGrid />
                 </div>
 
-            </div>   
+            </div>
 
         );
     }
