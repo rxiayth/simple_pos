@@ -8,17 +8,16 @@ class UserCell extends Component {
     componentDidMount() {
     	var cellNumber = ReactDOM.findDOMNode(this).getAttribute('id');
     	// console.log(this.props.reactKey)
-        console.log(cellNumber)
-    	ReactDOM.findDOMNode(this).addEventListener('click', 
+        // console.log(cellNumber)
+    	ReactDOM.findDOMNode(this).addEventListener('click',
     		function(){ console.log('cellNumber: ' + cellNumber + ' says hi')});
   	}
 
     render() {
-
         return (
-            <div className="user-cell" id={this.props.cellNumber}>                
+            <div className="user-cell" id={this.props.cellNumber}>
             	{this.props.cellNumber}
-            </div>   
+            </div>
         );
     }
 
