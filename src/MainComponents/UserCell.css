@@ -1,7 +1,17 @@
 .user-cell {
-	width: 20%;
+	width: 19%;
 	height: 140px;
+	border: .5px dotted gray;
+	display: inline-block;
 
+}
+
+
+.user-cell.active {
+	width: 19%;
+	height: 140px;
+	border: .5px dotted gray;
+	background-color: green;
 	display: inline-block;
 
 }

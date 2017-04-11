@@ -4,19 +4,19 @@ import UserGrid from './MainComponents/UserGrid.js'
 import Toolbar from './ToolbarComponents/Toolbar.js'
 
 class AppRight extends Component {
-    render() {
+     render() {
         return (
 
             <div className="app-right">
 
                 <div className="app-navbar">
-                    <p> app-top-menu </p>
+                    {/*  <p> app-top-menu </p> */}
                     <Toolbar />
                 </div>
 
-                <div className="app-user-grid">
-                    <p>User Grid</p>
-                    <UserGrid />
+                <div className="app-user-grid" >
+                    {/*  <p>User Grid</p> */}
+                    <UserGrid cellChecked={this.props.cellChecked}/>
                 </div>
 
             </div>

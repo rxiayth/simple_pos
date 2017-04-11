@@ -11,8 +11,7 @@ class MenuItem extends Component {
             console.log('you clicked ' + menu_name);
             console.log('link of this button is : ' + menu_link);
         };
-        ReactDOM.findDOMNode(this).addEventListener('click',
-    		print_menu_name);
+        ReactDOM.findDOMNode(this).addEventListener('click', print_menu_name);
   	}
 
     render() {
@@ -21,8 +20,8 @@ class MenuItem extends Component {
         return (
             // button of the name
             // button onclick will pop up new main screen thingy
-            <div className={menu_name}>
-                <button>{menu_name}</button>
+            <div className="menu-item {menu_name}">
+                {menu_name}
             </div>
         );
     }

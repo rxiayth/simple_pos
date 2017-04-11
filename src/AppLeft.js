@@ -17,6 +17,7 @@ class AppLeft extends Component {
 
                 <div className="app-user-detail">
                     <p>USER DETAIL: [USER]</p>
+                    <p>{this.props.cellActive}</p>
                 </div>
 
             </div>
