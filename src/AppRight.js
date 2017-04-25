@@ -16,7 +16,7 @@ class AppRight extends Component {
 
                 <div className="app-user-grid" >
                     {/*  <p>User Grid</p> */}
-                    <UserGrid cellChecked={this.props.cellChecked}/>
+                    <UserGrid cellChecked={this.props.cellChecked} inventory={this.props.inventory}/>
                 </div>
 
             </div>

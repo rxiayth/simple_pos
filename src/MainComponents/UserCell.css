@@ -1,6 +1,6 @@
 .user-cell {
-	width: 19%;
-	height: 140px;
+	width: 33%;
+	height: 26vh;
 	border: .5px dotted gray;
 	display: inline-block;
 
@@ -8,10 +8,20 @@
 
 
 .user-cell.active {
-	width: 19%;
-	height: 140px;
+	width: 33%;
+	height: 26vh;
 	border: .5px dotted gray;
 	background-color: green;
 	display: inline-block;
+
+}
+
+.add-button {
+	position: inline;
+	bottom: 0;
+	left: 0;
+}
+
+.remove-button {
 
 }

@@ -3,20 +3,34 @@ import './UserGrid.css';
 import UserCell from './UserCell.js';
 
 class UserGrid extends Component {
-  constructor(props) {
-    super(props);
-    
-  }
 
     render() {
         var grid = [];
-        for (var i = 1; i < 26; i++) {
-          grid.push(<UserCell key={i} cellNumber={i} cellChecked={this.props.cellChecked}/>);
+        var drinks = [
+             'beer'
+            ,'gin'
+            ,'rum'
+            ,'sake'
+            ,'soju'
+            ,'vodka'
+            ,'wine'
+            ,'whiskey'
+            ,'water'
+        ];
+
+        for (var i = 1; i <= 9; i++) {
+            var drink = drinks[i-1];
+            if (typeof this.props.inventory.drinks !== 'undefined') {
+                var volume=this.props.inventory.drinks[drink];
+                console.log(volume);
+                grid.push(<UserCell key={i} drinks={drinks[i-1]} volume={volume} cellChecked={this.props.cellChecked}/>);
+            }
+
         };
 
         return (
            <div className="user-grid">
-            {grid}
+                {grid}
            </div>
         );
     }
