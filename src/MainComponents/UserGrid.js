@@ -22,7 +22,6 @@ class UserGrid extends Component {
             var drink = drinks[i-1];
             if (typeof this.props.inventory.drinks !== 'undefined') {
                 var volume=this.props.inventory.drinks[drink];
-                console.log(volume);
                 grid.push(<UserCell key={i} drinks={drinks[i-1]} volume={volume} cellChecked={this.props.cellChecked}/>);
             }
 

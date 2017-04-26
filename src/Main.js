@@ -3,7 +3,7 @@ import './App.css';
 import UserGrid from './MainComponents/UserGrid.js'
 import Toolbar from './ToolbarComponents/Toolbar.js'
 
-class AppRight extends Component {
+class Main extends Component {
      render() {
         return (
 
@@ -25,4 +25,4 @@ class AppRight extends Component {
     }
 }
 
-export default AppRight;
+export default Main;

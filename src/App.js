@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import AppLeft from './AppLeft'
-import AppRight from './AppRight';
+import CartSidebar from './CartSidebar'
+import Main from './Main';
 
 class App extends Component {
 
@@ -10,12 +10,13 @@ class App extends Component {
 	    this.state = {
 	    	cellActive: "none",
 	        cellChecked: false,
-			inventory: []
+			inventory: [],
+			cart: {}
       	}
 	}
 
 	componentDidMount() {
-		// pull inventory from database
+		// pull inventory from database for store
 		var inventory = {
 			drinks : {
 				 'beer' : 10
@@ -29,7 +30,19 @@ class App extends Component {
 				,'water' : 10
 			}
 		}
+		var cart = {
+			 'beer' : 0
+			,'gin' : 0
+			,'rum' : 0
+			,'sake' : 0
+			,'soju' : 0
+			,'vodka' : 0
+			,'wine' : 0
+			,'whiskey' : 0
+			,'water' : 0
+		}
 		this.setState({'inventory' : inventory});
+		this.setState({'cart' : cart});
 	}
 
     onClick(e, drinks) {
@@ -41,8 +54,8 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <AppLeft cellActive={this.state.cellActive} />
-                <AppRight cellChecked={this.onClick.bind(this)} inventory={this.state.inventory} />
+                <CartSidebar cellActive={this.state.cellActive} cart={this.state.cart}/>
+                <Main cellChecked={this.onClick.bind(this)} inventory={this.state.inventory} cart={this.state.cart}/>
             </div>
         );
     }

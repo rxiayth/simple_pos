@@ -15,7 +15,6 @@ class UserCell extends Component {
   	}
 
     onClick(e) {
-        console.log('test');
         console.log('drink : ' + this.props.drinks + ' says hi');
         this.props.cellChecked(e, this.props.drinks);
         // this.addOne();
@@ -45,7 +44,8 @@ class UserCell extends Component {
             >
             	{this.props.drinks}
                 <br/>
-                {this.state.quantity}
+                volume: {this.state.quantity}
+                <br/><br/><br/>
                 <button className="add-button" onClick={this.addOne}>add</button>
                 <button className="remove-button" onClick={this.removeOne}>remove</button>
 
