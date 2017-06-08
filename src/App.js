@@ -17,23 +17,48 @@ class App extends Component {
 	}
 
 	componentWillMount() {
-		// load inventory
-		var beer = {
-			'product_name' : 'beer',
-			'price':'1.23',
-			'volume':10,
-			'sku': 1003918 // random unique
-		};
-		this.state.inventory[beer.sku] = beer;
+		const NUM_OF_ITEMS = 25;
+		const DRINK_LIST = [
+			'keith',
+			'gin',
+			'captain_morgan',
+			'vodka',
+			'coke',
+			'sake',
+			'wine',
+			'pombay',
+			'soju',
+			'water', //10
+			'7up',
+			'juice',
+			'1',
+			'2',
+			'3',
+			'4',
+			'5',
+			'6',
+			'7',
+			'8', //20
+			'9',
+			'10',
+			'11',
+			'12',
+			'13'
+		]
 
-		// repeat for 25 items
-		var gin = {
-			'product_name' : 'gin',
-			'price':'1.23',
-			'volume':10,
-			'sku': 1003917
-		};
-		this.state.inventory[gin.sku] = gin;
+		for (var i = 0; i < NUM_OF_ITEMS; i++) {
+			var product_name = DRINK_LIST[i];
+			var price = Math.floor(Math.random() * i * 100)/100;
+			var volume = 10;
+			var sku = 1003900 + i;
+			var drink = {
+				product_name : product_name,
+				price : price,
+				volume : volume,
+				sku : sku
+			}
+			this.state.inventory[drink.sku] = drink;
+		}
 
 		this.setState({'inventory':this.state.inventory});
 	}
