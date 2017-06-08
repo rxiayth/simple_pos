@@ -1,10 +1,41 @@
 .App {
 	margin: 0;
 	padding: 0;
-	text-align: center;
+	height: 600px;
+	width: 800px;
 }
 
+.menu {
+	margin: 0;
+	padding: 0;
+	height: 600px;
+	width: 600px;
+	background-color: yellow;
+}
 
+.cart {
+	margin: 0;
+	padding: 0;
+	height: 400px;
+	width: 200px;
+	background-color: lightblue;
+	position: absolute;
+	left: 600px;
+	top: 0;
+}
+
+.actions {
+	margin: 0;
+	padding: 0;
+	height: 200px;
+	width: 200px;
+	background-color: lightgreen;
+	position: absolute;
+	left: 600px;
+	top: 400px;
+}
+
+/*
 .cart-sidebar {
 	background-color: gray;
 	width: 20%;
@@ -14,7 +45,7 @@
 	color: white;
 }
 
-table { 
+table {
 	margin: auto;
 }
 td, th {
@@ -60,4 +91,4 @@ td, th {
 	height: 80%;
 	display: inline-block;
 
-}
+}*/

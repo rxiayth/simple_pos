@@ -1,61 +1,47 @@
 import React, { Component } from 'react';
 import './App.css';
-import CartSidebar from './CartSidebar'
-import Main from './Main';
+import Menu from './Menu/Menu'
+import Cart from './Cart/Cart'
+import Actions from './Actions/Actions'
 
 class App extends Component {
 
+	// needs callback onclick function
+
 	constructor(props) {
 		super(props);
-	    this.state = {
-	    	cellActive: "none",
-	        cellChecked: false,
-			inventory: [],
+		this.state = {
+			inventory: {},
 			cart: {}
-      	}
+		}
 	}
 
-	componentDidMount() {
-		// pull inventory from database for store
-		var inventory = {
-			drinks : {
-				 'beer' : 10
-				,'gin' : 10
-				,'rum' : 10
-				,'sake' : 10
-				,'soju' : 10
-				,'vodka' : 10
-				,'wine' : 10
-				,'whiskey' : 10
-				,'water' : 10
-			}
-		}
-		var cart = {
-			 'beer' : 0
-			,'gin' : 0
-			,'rum' : 0
-			,'sake' : 0
-			,'soju' : 0
-			,'vodka' : 0
-			,'wine' : 0
-			,'whiskey' : 0
-			,'water' : 0
-		}
-		this.setState({'inventory' : inventory});
-		this.setState({'cart' : cart});
-	}
+	componentWillMount() {
+		// load inventory
+		var beer = {
+			'product_name' : 'beer',
+			'price':'1.23',
+			'volume':10,
+			'sku': 1003918 // random unique
+		};
+		this.state.inventory[beer.sku] = beer;
 
-    onClick(e, drinks) {
-		this.setState({cellChecked : !this.state.cellChecked});
-        this.setState({cellActive : drinks });
-        e.target.classList.toggle("active");
-    }
+		// repeat for 25 items
+		var gin = {
+			'product_name' : 'gin',
+			'price':'1.23',
+			'volume':10,
+			'sku': 1003917
+		};
+		this.state.inventory[gin.sku] = gin;
+
+		this.setState({'inventory':this.state.inventory});
+	}
 
     render() {
         return (
             <div className="App">
-                <CartSidebar cellActive={this.state.cellActive} cart={this.state.cart}/>
-                <Main cellChecked={this.onClick.bind(this)} inventory={this.state.inventory} cart={this.state.cart}/>
+				<Menu inventory={this.props.inventory} /><Cart /><Actions />
             </div>
         );
     }
