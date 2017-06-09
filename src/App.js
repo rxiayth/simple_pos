@@ -12,8 +12,15 @@ class App extends Component {
 		super(props);
 		this.state = {
 			inventory: {},
-			cart: {}
+			cart: {'item':'hi'}
 		}
+	}
+
+
+	selectItem(e, item) {
+
+		console.log(e.target.innerHTML)
+		// this.setState({cart: this.state.cart })
 	}
 
 	componentWillMount() {
@@ -66,7 +73,14 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-				<Menu inventory={this.props.inventory} /><Cart /><Actions />
+				<Menu 
+					inventory={this.state.inventory}
+					selectItem={this.selectItem}
+				/>
+				<Cart 
+					cart={this.state.cart}
+				/>
+				<Actions />
             </div>
         );
     }
