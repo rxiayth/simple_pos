@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Menu from './Menu/Menu'
-import Cart from './Cart/Cart'
-import Actions from './Actions/Actions'
+import Cart from './Cart/Cart.js'
+import Actions from './Actions/Actions.js'
 
 class App extends Component {
 
@@ -11,16 +11,21 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			inventory: {},
-			cart: {'item':'hi'}
+			menu: {}, // has the properties of drink.
+			inventory: {}, // sku : volume
+			cart: {}
 		}
+
+		this.selectMenuItem = this.selectMenuItem.bind(this);
 	}
 
+	selectMenuItem(sku) {
+		var name = this.state.menu[sku].product_name;
+		var alreadyInCart = name in this.state.cart;
+		var volume = (alreadyInCart ? this.state.cart[name]+1 : 1);
 
-	selectItem(e, item) {
-
-		console.log(e.target.innerHTML)
-		// this.setState({cart: this.state.cart })
+		this.state.cart[name] = volume;
+		this.setState({cart : this.state.cart});
 	}
 
 	componentWillMount() {
@@ -56,28 +61,28 @@ class App extends Component {
 		for (var i = 0; i < NUM_OF_ITEMS; i++) {
 			var product_name = DRINK_LIST[i];
 			var price = Math.floor(Math.random() * i * 100)/100;
-			var volume = 10;
 			var sku = 1003900 + i;
 			var drink = {
 				product_name : product_name,
 				price : price,
-				volume : volume,
 				sku : sku
 			}
-			this.state.inventory[drink.sku] = drink;
+			this.state.menu[drink.sku] = drink;
+			this.state.inventory[drink.sku] = 10;
 		}
 
-		this.setState({'inventory':this.state.inventory});
+		this.setState({menu:this.state.menu});
+		this.setState({inventory:this.state.inventory});
 	}
 
     render() {
         return (
-            <div className="App">
-				<Menu 
-					inventory={this.state.inventory}
-					selectItem={this.selectItem}
+            <div className='App'>
+				<Menu
+					menu={this.state.menu}
+					selectMenuItem={this.selectMenuItem}
 				/>
-				<Cart 
+				<Cart
 					cart={this.state.cart}
 				/>
 				<Actions />

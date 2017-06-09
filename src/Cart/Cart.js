@@ -4,15 +4,27 @@ import '../App.css';
 class Cart extends Component {
 
     render() {
+        var cartItems = [];
+        for (var name in this.props.cart) {
+            if ( this.props.cart.hasOwnProperty(name)) {
+                cartItems.push(
+            		<div
+                        >
+            			{name + ' : ' + this.props.cart[name]}
+
+            		</div>
+                );
+                console.log(name + this.props.cart[name]);
+            }
+        }
         return (
-           <div className='cart' >
-           		<div className='cartItems'>Items
-           			{ console.dir(this.props.cart) }
-           		</div>
+            <div className='cart' >
+                <div className='cartItems' >
+                    {cartItems}
+                </div>
 
            		<hr />
            		<div className='cartTotal'>Total:</div>
-           
            </div>
         );
     }
