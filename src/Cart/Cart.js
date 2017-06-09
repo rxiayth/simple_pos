@@ -8,11 +8,9 @@ class Cart extends Component {
         for (var name in this.props.cart) {
             if ( this.props.cart.hasOwnProperty(name)) {
                 cartItems.push(
-            		<div
-                        >
-            			{name + ' : ' + this.props.cart[name]}
-
-            		</div>
+                    <div>
+                        {name + ' : ' + this.props.cart[name]}
+                    </div>
                 );
                 console.log(name + this.props.cart[name]);
             }
@@ -23,8 +21,8 @@ class Cart extends Component {
                     {cartItems}
                 </div>
 
-           		<hr />
-           		<div className='cartTotal'>Total:</div>
+                <hr />
+                <div className='cartTotal'>Total:</div>
            </div>
         );
     }
