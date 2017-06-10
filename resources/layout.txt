@@ -1,0 +1,49 @@
+App.js
+    - the main container of the whole system.
+
+    - has 'menu' : the product name, sku, price, etc
+    - has 'inventory' : the volume of each sku
+
+    - 3 components
+        1. Menu.js
+        2. Cart.js
+        3. Actions.js
+
+    - has callback functions
+        1. selectMenuItem - send to menu
+            - called when user clicks on one of the items on the menu
+            - take in sku, output nothing
+            - update cart to include the selected item
+        //2. selectCartItem - send to cart
+        //    - called when user clicks on one of the items on the cart
+        //    - take in sku, output nothing
+        3. selectAction - send to actions
+            - called when user clicks on one of the items on the actions
+
+            - discuss how the layout should look like.
+                - 4 funcs in app, send all via prop to actions to each action?
+                    - messy
+                - 1 func in app split by a parameter (1,2,3,4) send one via prop
+                    to actions, action sends to each action with parameter 1234?
+                    - unnecessary information in each action
+
+Menu.js
+    - 1 component x NUMBER OF ITEMS ON MENU(25)
+        1. MenuItem.js
+
+
+MenuItem.js
+
+
+Cart.js
+    - 2 components
+        1. CartItem.js
+        2. Total.js
+
+
+CartItem.js
+
+
+Actions.js
+    - 1 components x NUMBER OF ACTIONS(4)
+        1. Action.js

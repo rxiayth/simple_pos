@@ -12,6 +12,14 @@ class Cart extends Component {
                         {name + ' : ' + this.props.cart[name]}
                     </div>
                 );
+                /*
+                cartItems.push(
+                    <MenuItem
+                        productName=name
+                        quantity=this.props.cart[name]
+                    />
+                );
+                */
                 console.log(name + this.props.cart[name]);
             }
         }
