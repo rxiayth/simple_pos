@@ -14,6 +14,8 @@ App.js
             - called when user clicks on one of the items on the menu
             - take in sku, output nothing
             - update cart to include the selected item
+            - update menu to correctly represent the current inventory
+
         //2. selectCartItem - send to cart
         //    - called when user clicks on one of the items on the cart
         //    - take in sku, output nothing
@@ -31,17 +33,39 @@ Menu.js
     - 1 component x NUMBER OF ITEMS ON MENU(25)
         1. MenuItem.js
 
+    - receive 'menu' from App.js
+        'menu' will have sku:product_name
+
+    - passes the selectCartItem to MenuItems.
+    - passes each MenuItem a unique sku as key and product_name
 
 MenuItem.js
+    - display product_name
+    - only needs sku and product_name
 
+    - has a function to handle onclick
+        in which will call App.js's selectMenuItem
+        * random thought, App.js = 1 selectButton function to be shared everywhere
+        * menu has 1 selectMenuItem function that calls selectButton
+        * and menu item calls selectMenuItem?
 
 Cart.js
     - 2 components
         1. CartItem.js
         2. Total.js
 
+    - will receive from App.js
+        1. total cost? vs individual price that Cart will add up?
+        2. cart items as a list (as to keep the order of products?)
+            * is it necesary? i'd prefer to use dictionary
+        3. do we need a minus function?
+            * note swipe to remove.
+            * link : https://stackoverflow.com/questions/40463173/swipe-effect-in-react-js
 
 CartItem.js
+    - individual items in cart
+    - needs sku, product name, and quantity
+    
 
 
 Actions.js
