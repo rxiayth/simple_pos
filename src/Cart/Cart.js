@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
 import '../App.css';
+import CartItem from './CartItem.js';
 
 class Cart extends Component {
 
     render() {
         var cartItems = [];
-        for (var name in this.props.cart) {
-            if ( this.props.cart.hasOwnProperty(name)) {
+        var total = 0;
+        for (var sku in this.props.cart) {
+            if ( this.props.cart.hasOwnProperty(sku)) {
+                var productName = this.props.cart[sku].productName;
+                var quantity = this.props.cart[sku].quantity;
+                var price = this.props.cart[sku].price;
+
                 cartItems.push(
-                    <div>
-                        {name + ' : ' + this.props.cart[name]}
-                    </div>
-                );
-                /*
-                cartItems.push(
-                    <MenuItem
-                        productName=name
-                        quantity=this.props.cart[name]
+                    <CartItem
+                        key={sku}
+                        productName={productName}
+                        quantity={quantity}
                     />
                 );
-                */
-                console.log(name + this.props.cart[name]);
+
+                total += (price * quantity);
             }
         }
         return (
@@ -30,7 +31,14 @@ class Cart extends Component {
                 </div>
 
                 <hr />
-                <div className='cartTotal'>Total:</div>
+                <div className='cartTotal'>
+                    Total: {total.toFixed(2)}
+                </div>
+                {/*
+                <Total
+                    total=total
+                />
+                */}
            </div>
         );
     }

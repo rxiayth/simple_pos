@@ -16,7 +16,7 @@ class MenuItem extends Component {
     render() {
         return (
             <div onClick={this.onClick}>
-                {this.props.item.product_name}
+                {this.props.item.productName}
             </div>
         )
     }

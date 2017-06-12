@@ -65,7 +65,7 @@ Cart.js
 CartItem.js
     - individual items in cart
     - needs sku, product name, and quantity
-    
+
 
 
 Actions.js
