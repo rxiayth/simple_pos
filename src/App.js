@@ -13,10 +13,11 @@ class App extends Component {
 		this.state = {
 			menu: {}, // has the properties of drink.
 			inventory: {}, // sku : volume
-			cart: {}
+			cart: {} // sku : {productName : name, quantity : n, price : x}
 		}
 
 		this.selectMenuItem = this.selectMenuItem.bind(this);
+		this.clearCart = this.clearCart.bind(this);
 	}
 
 	componentWillMount() {
@@ -27,7 +28,7 @@ class App extends Component {
 			'wine',				'pombay',
 			'soju',				'water', //10
 			'7up',				'juice',
-			'1',				'2',
+			'americano',		'latte',
 			'3',				'4',
 			'5',				'6',
 			'7',				'8', //20
@@ -64,7 +65,9 @@ class App extends Component {
 				<Cart
 					cart={this.state.cart}
 				/>
-				<Actions />
+				<Actions
+					clearCart={this.clearCart}
+				/>
             </div>
         );
     }
@@ -85,6 +88,11 @@ class App extends Component {
 		// this.state.cart[sku].price = price;
 
 		this.setState({cart : this.state.cart});
+	}
+
+	clearCart() {
+		this.state.cart = {};
+		this.setState({cart:this.state.cart});
 	}
 }
 
