@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import CartItem from './CartItem.js';
+import Total from './Total.js';
 
 class Cart extends Component {
 
@@ -8,7 +9,7 @@ class Cart extends Component {
         var cartItems = [];
         var total = 0;
         for (var sku in this.props.cart) {
-            if ( this.props.cart.hasOwnProperty(sku)) {
+            if (this.props.cart.hasOwnProperty(sku)) {
                 var productName = this.props.cart[sku].productName;
                 var quantity = this.props.cart[sku].quantity;
                 var price = this.props.cart[sku].price;
@@ -31,14 +32,9 @@ class Cart extends Component {
                 </div>
 
                 <hr />
-                <div className='cartTotal'>
-                    Total: {total.toFixed(2)}
-                </div>
-                {/*
                 <Total
-                    total=total
+                    total={total.toFixed(2)}
                 />
-                */}
            </div>
         );
     }
