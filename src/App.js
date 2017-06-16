@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Menu from './Menu/Menu'
 import Cart from './Cart/Cart.js'
-import Actions from './Actions/Actions.js'
+import ActionBar from './Actions/ActionBar.js'
 
 class App extends Component {
 
@@ -13,11 +13,15 @@ class App extends Component {
 		this.state = {
 			menu: {}, // has the properties of drink.
 			inventory: {}, // sku : volume
-			cart: {} // sku : {productName : name, quantity : n, price : x}
+			cart: {}, // sku : {productName : name, quantity : n, price : x}
+			disabledMenuItem: [] // list of sku 
 		}
 
 		this.selectMenuItem = this.selectMenuItem.bind(this);
-		this.clearCart = this.clearCart.bind(this);
+		this.clear = this.clear.bind(this);
+		this.purchase = this.purchase.bind(this);
+		this.cancel = this.cancel.bind(this);
+		this.settings = this.settings.bind(this);
 	}
 
 	componentWillMount() {
@@ -61,12 +65,16 @@ class App extends Component {
 				<Menu
 					menu={this.state.menu}
 					selectMenuItem={this.selectMenuItem}
+					disabledMenuItem= {this.state.disabledMenuItem}
 				/>
 				<Cart
 					cart={this.state.cart}
 				/>
-				<Actions
-					clearCart={this.clearCart}
+				<ActionBar
+					clear={this.clear}
+					purchase={this.purchase}
+					cancel={this.cancel}
+					settings={this.settings}
 				/>
             </div>
         );
@@ -83,16 +91,49 @@ class App extends Component {
 			quantity : quantity,
 			price : price
 		};
-		// this.state.cart[sku].productName = productName;
-		// this.state.cart[sku].quantity = quantity;
-		// this.state.cart[sku].price = price;
-
+		
 		this.setState({cart : this.state.cart});
+		var isAvailable = this.checkAvailable(sku, quantity);
+		if (!isAvailable){
+			this.updateDisableMenuItem(sku);
+			console.log('maxed out');
+		}
 	}
 
-	clearCart() {
+
+	checkAvailable(sku, quantity){
+		return quantity < this.state.inventory[sku];
+
+	}
+
+	updateDisableMenuItem(sku) {
+		var curDisabledMenuItem = this.state.disabledMenuItem; 
+		curDisabledMenuItem.push(sku);
+		this.setState({disabledMenuItem: curDisabledMenuItem });
+	}
+	
+	clear() {
 		this.state.cart = {};
 		this.setState({cart:this.state.cart});
+	}
+	
+	purchase() {
+		// var confirmation = confirm("Confirm purchase ");
+		// if (confirmation) { 
+			var curInventory = this.state.inventory;
+
+			for (var sku in this.state.cart) {
+				curInventory[sku] -= this.state.cart[sku].quantity;
+			};
+			this.setState({inventory: curInventory});
+			this.clear();
+		// } 
+	}
+
+	cancel() {
+	}
+
+	settings() {
 	}
 }
 

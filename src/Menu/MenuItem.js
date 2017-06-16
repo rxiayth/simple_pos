@@ -6,6 +6,7 @@ class MenuItem extends Component {
     constructor(props) {
       super(props);
       this.onClick = this.onClick.bind(this);
+
     }
 
     onClick(e) {
@@ -15,8 +16,9 @@ class MenuItem extends Component {
 
     render() {
         return (
-            <div onClick={this.onClick}>
-                {this.props.item.productName}
+            <div className={(this.props.availability)? "a":"b"} onClick={this.onClick}>
+                {this.props.item.productName} <br/>
+                {'$' + this.props.item.price}
             </div>
         )
     }

@@ -18,12 +18,14 @@ class Menu extends Component {
             into the prototype object of 'this.props.menu'.
             link: https://stackoverflow.com/questions/558981/getting-a-list-of-associative-array-keys
             */}
-            if (this.props.menu.hasOwnProperty(sku)) {
+
+            if (this.props.menu.hasOwnProperty(sku) ) {
                 menuItems.push(
                     <MenuItem
                         key={sku}
                         item={this.props.menu[sku]}
                         selectMenuItem={this.props.selectMenuItem}
+                        availability={ !(sku in this.props.disabledMenuItem) }
                     />
                 );
             }

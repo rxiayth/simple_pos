@@ -60,6 +60,10 @@
 
 }
 
+.unavailable {
+	background-color: gray;
+}
+
 /*
 .cart-sidebar {
 	background-color: gray;
