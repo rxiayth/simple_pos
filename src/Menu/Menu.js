@@ -21,7 +21,7 @@ class Menu extends Component {
             if (this.props.menu.hasOwnProperty(sku)) {
                 menuItems.push(
                     <MenuItem
-                        key={this.props.menu[sku].sku}
+                        key={sku}
                         item={this.props.menu[sku]}
                         selectMenuItem={this.props.selectMenuItem}
                     />
