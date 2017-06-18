@@ -15,8 +15,14 @@ class MenuItem extends Component {
     }
 
     render() {
+        let menuItemstyle = {
+            height: '20%',
+            width: '20%',
+            float: 'left'
+        };
+
         return (
-            <div onClick={this.onClick}>
+            <div style={menuItemstyle} onClick={this.onClick}>
                 {this.props.item.productName}
                 <br/>
                 {'$' + this.props.item.price}

@@ -13,7 +13,7 @@ class Action extends Component {
 		}
 
 		return (
-			<div style={actionStyle} onClick={this.props.func}>
+			<div onClick={this.props.func}>
 				{this.props.name}
 			</div>
 		)

@@ -10,6 +10,12 @@ class Menu extends Component {
     }
 
     render() {
+        let menuStyle = {
+            height: 600,
+            width: 600,
+            backgroundColor: 'yellow'
+        };
+
         var menuItems = [];
         for (var sku in this.props.menu) {
             if (this.props.menu.hasOwnProperty(sku) ) {
@@ -24,9 +30,8 @@ class Menu extends Component {
             }
         }
 
-        // update css into style
         return (
-            <div className='menu' >
+            <div style={menuStyle}>
                 {menuItems}
             </div>
         );

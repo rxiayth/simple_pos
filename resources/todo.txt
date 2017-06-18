@@ -1,3 +1,6 @@
+1. figure out how to do borders nicely
+
+
 david
 1. change functions so that it is only used in immediate child. - dx
 

@@ -49,12 +49,18 @@ class App extends Component {
 	}
 
     render() {
+
+		let appStyle = {
+			height: 600,
+			width: 800
+		}
+
         return (
-            <div classname='App'>
+            <div style={appStyle}>
 				<Menu
 					menu={this.state.menu}
 					disabledMenuItem= {this.state.disabledMenuItem}
-					selectMenuItem={this.selectMenuItem} {/* don't need select menu, need update cart */}
+					selectMenuItem={this.selectMenuItem}
 					updateCart={this.updateCart}
 				/>
 				<Cart
