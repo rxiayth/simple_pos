@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-class Action extends React.Component {
+class Action extends Component {
 
 	render() {
 		var actionStyle = {
@@ -11,7 +11,7 @@ class Action extends React.Component {
 			textAlign: 'center',
 			border: '1px solid black'
 		}
-		
+
 		return (
 			<div style={actionStyle} onClick={this.props.func}>
 				{this.props.name}
