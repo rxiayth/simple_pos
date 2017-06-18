@@ -6,15 +6,14 @@ class Total extends Component {
     render() {
         var style = {
             total : {
-                backgroundColor : 'red'
+                backgroundColor : 'red',
             }
         }
-        // var total = this.props.total;
 
         var total = this.props.total;
         return (
-            <div>
-                <div style={style}>
+            <div style={style}>
+                <div>
                     TOTAL:
                 </div>
                 <div className='price'>

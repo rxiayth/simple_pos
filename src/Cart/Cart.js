@@ -8,6 +8,7 @@ class Cart extends Component {
     render() {
         var cartItems = [];
         var total = 0;
+        
         for (var sku in this.props.cart) {
             if (this.props.cart.hasOwnProperty(sku)) {
                 var productName = this.props.cart[sku].productName;

@@ -3,7 +3,7 @@
         MenuItem. (2 steps down)
     - try to change to... perhaps
         define updateCart in App
-        used in selectMenu
+        used in Menu
 
         define selectMenuItem in Menu
         used in MenuItem
@@ -17,4 +17,4 @@
             this.props.updateCart(sku, 1);
         }
 
-    
+nts; -1 on items not in cart?

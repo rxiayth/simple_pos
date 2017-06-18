@@ -9,15 +9,12 @@ class CartItem extends Component {
 
         return (
             <div>
-                {productName} : {quantity}
-                {/* change to below later : 
-                <div className='productName'>
+                <div className='productName'> {/* or style= xxx */}
                     {productName}
                 </div>
                 <div className='quantity'>
                     {quantity}
                 </div>
-                */}
             </div>
         );
     }

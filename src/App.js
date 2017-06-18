@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import Menu from './Menu/Menu'
 import Cart from './Cart/Cart.js'
-import ActionBar from './Actions/ActionBar.js'
+import ActionBar from './Action/ActionBar.js'
 
 class App extends Component {
-
-	// needs callback onclick function
 
 	constructor(props) {
 		super(props);
@@ -14,10 +12,11 @@ class App extends Component {
 			menu: {}, // has the properties of drink.
 			inventory: {}, // sku : volume
 			cart: {}, // sku : {productName : name, quantity : n, price : x}
-			disabledMenuItem: [] // list of sku 
+			disabledMenuItem: [] // list of sku
 		}
 
-		this.selectMenuItem = this.selectMenuItem.bind(this);
+		this.updateCart = this.updateCart.bind(this);
+
 		this.clear = this.clear.bind(this);
 		this.purchase = this.purchase.bind(this);
 		this.cancel = this.cancel.bind(this);
@@ -64,7 +63,7 @@ class App extends Component {
             <div className='App'>
 				<Menu
 					menu={this.state.menu}
-					selectMenuItem={this.selectMenuItem}
+					updateCart={this.updateCart}
 					disabledMenuItem= {this.state.disabledMenuItem}
 				/>
 				<Cart
@@ -80,6 +79,23 @@ class App extends Component {
         );
     }
 
+	updateCart(sku, quantity) {
+		var product = this.state.menu[sku];
+		var productName = product.productName;
+		var isAlreadyInCart = sku in this.state.cart;
+		var originalQuantity = (isAlreadyInCart ? this.state.cart[sku].quantity : 0);
+		var newQuantity = originalQuantity + quantity;
+		var price = product.price;
+
+		this.state.cart[sku] = {
+			productName : productName,
+			quantity : newQuantity,
+			price : price
+		};
+
+		this.setState({cart : this.state.cart});
+	}
+
 	selectMenuItem(sku) {
 		var productName = this.state.menu[sku].productName;
 		var isAlreadyInCart = sku in this.state.cart;
@@ -91,7 +107,7 @@ class App extends Component {
 			quantity : quantity,
 			price : price
 		};
-		
+
 		this.setState({cart : this.state.cart});
 		var isAvailable = this.checkAvailable(sku, quantity);
 		if (!isAvailable){
@@ -107,19 +123,19 @@ class App extends Component {
 	}
 
 	updateDisableMenuItem(sku) {
-		var curDisabledMenuItem = this.state.disabledMenuItem; 
+		var curDisabledMenuItem = this.state.disabledMenuItem;
 		curDisabledMenuItem.push(sku);
 		this.setState({disabledMenuItem: curDisabledMenuItem });
 	}
-	
+
 	clear() {
 		this.state.cart = {};
 		this.setState({cart:this.state.cart});
 	}
-	
+
 	purchase() {
 		// var confirmation = confirm("Confirm purchase ");
-		// if (confirmation) { 
+		// if (confirmation) {
 			var curInventory = this.state.inventory;
 
 			for (var sku in this.state.cart) {
@@ -127,7 +143,7 @@ class App extends Component {
 			};
 			this.setState({inventory: curInventory});
 			this.clear();
-		// } 
+		// }
 	}
 
 	cancel() {
