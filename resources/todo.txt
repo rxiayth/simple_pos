@@ -1,0 +1,20 @@
+1. change functions so that it is only used in immediate child.
+    - e.g. selectMenuItem is defined in App.js and used in
+        MenuItem. (2 steps down)
+    - try to change to... perhaps
+        define updateCart in App
+        used in selectMenu
+
+        define selectMenuItem in Menu
+        used in MenuItem
+
+    - mebbe...
+        updateCart(sku, quantity)
+            use in both MenuItem with sku +1
+            and mebbe Cart to minus with sku -1
+
+        selectMenuItem(sku) {
+            this.props.updateCart(sku, 1);
+        }
+
+    
