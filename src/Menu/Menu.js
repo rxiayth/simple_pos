@@ -8,6 +8,8 @@ class Menu extends Component {
     // this.props.selectMenuItem should be function from App.js
     constructor(props) {
       super(props);
+      this.selectMenuItem = this.selectMenuItem.bind(this);
+
     }
 
     render() {
@@ -24,7 +26,7 @@ class Menu extends Component {
                     <MenuItem
                         key={sku}
                         item={this.props.menu[sku]}
-                        selectMenuItem={this.props.selectMenuItem}
+                        selectMenuItem={this.selectMenuItem}
                         availability={ !(sku in this.props.disabledMenuItem) }
                     />
                 );
@@ -36,21 +38,12 @@ class Menu extends Component {
                 {menuItems}
             </div>
         );
-            {/*
-                { Object.keys(this.props.inventory).map(
-                (key) => {
-                return (
-                <div
-                key={key}
-                onClick={this.props.selectItem.bind(this)}>
-                {this.props.inventory[key].product_name}
-                </div>)
-            }
-        )}
-        */}
-
-        {/* 5x5 buttons */}
     }
+
+    selectMenuItem(sku) {
+        this.props.updateCart(sku, 1);
+    }
+
 }
 
 export default Menu;

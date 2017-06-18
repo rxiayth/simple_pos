@@ -7,8 +7,6 @@ import ActionBar from './Action/ActionBar.js'
 
 class App extends Component {
 
-	// needs callback onclick function
-
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -18,6 +16,7 @@ class App extends Component {
 			disabledMenuItem: [] 	// [sku1, sku2, sku3]
 		}
 
+		this.updateCart = this.updateCart.bind(this);
 		this.selectMenuItem = this.selectMenuItem.bind(this);
 		this.clear = this.clear.bind(this);
 		this.purchase = this.purchase.bind(this);
@@ -30,7 +29,7 @@ class App extends Component {
 	}
 
 	initiateDrinkList() {
-		
+		console.log(DRINK_LIST);
 		for (var i in DRINK_LIST) {
 			var name = DRINK_LIST[i];
 			var price = 1+(Math.floor(Math.random() * i * 100)/100).toFixed(2);
@@ -55,6 +54,8 @@ class App extends Component {
 					menu={this.state.menu}
 					disabledMenuItem= {this.state.disabledMenuItem}
 					selectMenuItem={this.selectMenuItem}
+					updateCart={this.updateCart}
+
 				/>
 				<Cart
 					cart={this.state.cart}
