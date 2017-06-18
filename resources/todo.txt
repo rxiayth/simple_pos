@@ -17,4 +17,22 @@
             this.props.updateCart(sku, 1);
         }
 
-nts; -1 on items not in cart?
+2. style. convert all of css into style
+
+3. disable the button when maxed
+
+4. borders on menuItem
+
+5. minus button on cartitem
+
+-- ??
+6. swipe to remove?
+
+7. generalize funcs in components
+
+8. click settings to update Menu into Setting
+    - change menu section into setting section
+
+9. database, change to JSON with set values for price and etc
+
+10. 
