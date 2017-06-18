@@ -82,3 +82,10 @@ CartItem.js
 Actions.js
     - 1 components x NUMBER OF ACTIONS(4)
         1. Action.js
+
+
+        {/*
+        'hasOwnPropery' is needed because it's possible to insert keys
+        into the prototype object of 'this.props.menu'.
+        link: https://stackoverflow.com/questions/558981/getting-a-list-of-associative-array-keys
+        */}

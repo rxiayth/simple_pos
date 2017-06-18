@@ -1,38 +1,51 @@
-1. change functions so that it is only used in immediate child.
-    - e.g. selectMenuItem is defined in App.js and used in
-        MenuItem. (2 steps down)
-    - try to change to... perhaps
-        define updateCart in App
-        used in Menu
+david
+1. change functions so that it is only used in immediate child. - dx
 
-        define selectMenuItem in Menu
-        used in MenuItem
+3. disable the button when maxed - dx
 
-    - mebbe...
-        updateCart(sku, quantity)
-            use in both MenuItem with sku +1
-            and mebbe Cart to minus with sku -1
+5. plus +/- button on cartitem - dx
 
-        selectMenuItem(sku) {
-            this.props.updateCart(sku, 1);
-        }
+9. database, change to JSON with set values for price and etc - dx
 
-2. style. convert all of css into style
+11. convert internal functions to _blahblah - dx
 
-3. disable the button when maxed
+12. convert var into let and const - dx
 
-4. borders on menuItem
+// explanation sentence.
+// (a, b, c, d) --> boolean
+function(a, b, c, d) {
 
-5. minus button on cartitem
+}
 
--- ??
-6. swipe to remove?
+-- eric
+1. Create setting folder
+    setting.js - empty for now
+
+2. create ?? folder
+    button.js
+
+3. on max, disable button
+
+2. style. convert all of css into style -
+
+4. borders on menuItem -
+
+6. swipe to remove(??) -
 
 7. generalize funcs in components
 
 8. click settings to update Menu into Setting
     - change menu section into setting section
 
-9. database, change to JSON with set values for price and etc
+10. css
+    mouse hover, onclick color change etc
+    show option on mouse hover
 
-10. 
+-- nxt week
+
+12. funcs commented, parameter, return value set
+
+13. show info
+14. add pictures
+15. confirmation on purchase (not pop up)
+16. ??

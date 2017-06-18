@@ -18,6 +18,7 @@ class CartItem extends Component {
             </div>
         );
     }
+        // +/- button
 }
 
 export default CartItem;

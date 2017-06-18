@@ -8,7 +8,7 @@ class Cart extends Component {
     render() {
         var cartItems = [];
         var total = 0;
-        
+
         for (var sku in this.props.cart) {
             if (this.props.cart.hasOwnProperty(sku)) {
                 var productName = this.props.cart[sku].productName;
@@ -26,12 +26,12 @@ class Cart extends Component {
                 total += (price * quantity);
             }
         }
+
         return (
             <div className='cart' >
                 <div className='cartItems' >
                     {cartItems}
                 </div>
-
                 <hr />
                 <Total
                     total={total.toFixed(2)}
@@ -39,6 +39,8 @@ class Cart extends Component {
            </div>
         );
     }
+
+    // add +/- button
 }
 
 export default Cart;

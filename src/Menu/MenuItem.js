@@ -8,6 +8,7 @@ class MenuItem extends Component {
       this.onClick = this.onClick.bind(this);
     }
 
+    // change name of onclick
     onClick(e) {
         e.preventDefault();
         this.props.selectMenuItem(this.props.item.sku);
@@ -22,6 +23,7 @@ class MenuItem extends Component {
             </div>
         )
     }
+
 }
 
 export default MenuItem;

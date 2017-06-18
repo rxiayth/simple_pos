@@ -4,23 +4,14 @@ import MenuItem from './MenuItem.js';
 
 class Menu extends Component {
 
-    // this.props.menu should have 25 items in it
-    // this.props.selectMenuItem should be function from App.js
     constructor(props) {
       super(props);
       this.selectMenuItem = this.selectMenuItem.bind(this);
-
     }
 
     render() {
         var menuItems = [];
         for (var sku in this.props.menu) {
-            {/*
-            'hasOwnPropery' is needed because it's possible to insert keys
-            into the prototype object of 'this.props.menu'.
-            link: https://stackoverflow.com/questions/558981/getting-a-list-of-associative-array-keys
-            */}
-
             if (this.props.menu.hasOwnProperty(sku) ) {
                 menuItems.push(
                     <MenuItem
@@ -33,6 +24,7 @@ class Menu extends Component {
             }
         }
 
+        // update css into style
         return (
             <div className='menu' >
                 {menuItems}
@@ -44,6 +36,14 @@ class Menu extends Component {
         this.props.updateCart(sku, 1);
     }
 
+    // prbly gonna need a function to communicate menu <-> menu item
+    // and menu <-> app for disabled menuitems
+
+    updateDisable() {
+        // input :
+        // output :
+        // what its doing
+    }
 }
 
 export default Menu;

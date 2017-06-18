@@ -11,7 +11,7 @@ class Action extends React.Component {
 			textAlign: 'center',
 			border: '1px solid black'
 		}
-
+		
 		return (
 			<div style={actionStyle} onClick={this.props.func}>
 				{this.props.name}
