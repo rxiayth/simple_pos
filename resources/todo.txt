@@ -1,21 +1,30 @@
 david
-1. change functions so that it is only used in immediate child. - dx
+9. database 									DONE
+	- use JSON format
+	- create drinks with fixed values
+	- create inventory with fixed values 
 
-3. disable the button when maxed - dx
+12. convert var into let and const & doc
 
-5. plus +/- button on cartitem - dx
+1. change functions so that it is only used in immediate child.
+3. disable the button when maxed
+5. plus +/- button on cartitem
+11. convert internal functions to _blahblah
 
-9. database, change to JSON with set values for price and etc - dx
 
-11. convert internal functions to _blahblah - dx
 
-12. convert var into let and const - dx
+
+
+
+
 
 // explanation sentence.
 // (a, b, c, d) --> boolean
 function(a, b, c, d) {
 
 }
+
+
 
 -- eric
 1. Create setting folder
