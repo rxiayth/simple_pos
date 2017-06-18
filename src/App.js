@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import DRINK_LIST from './Database.js' // change to json
 import Menu from './Menu/Menu.js'
 import Cart from './Cart/Cart.js'

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../App.css';
 import CartItem from './CartItem.js';
 import Total from './Total.js';
 

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import '../App.css';
 import MenuItem from './MenuItem.js';
 
 class Menu extends Component {
 
     constructor(props) {
       super(props);
+
       this.selectMenuItem = this.selectMenuItem.bind(this);
     }
 

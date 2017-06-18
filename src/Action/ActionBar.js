@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../App.css';
 import Action from './Action.js';
 
 class ActionBar extends Component {
