@@ -6,7 +6,7 @@ class Menu extends Component {
     constructor(props) {
       super(props);
 
-      this.selectMenuItem = this.selectMenuItem.bind(this);
+      this.handleClick = this.handleClick.bind(this);
     }
 
     render() {
@@ -23,7 +23,7 @@ class Menu extends Component {
                     <MenuItem
                         key={sku}
                         item={this.props.menu[sku]}
-                        selectMenuItem={this.selectMenuItem}
+                        onSelect={this.handleClick}
                         availability={ !(sku in this.props.disabledMenuItem) }
                     />
                 );
@@ -37,12 +37,11 @@ class Menu extends Component {
         );
     }
 
-    selectMenuItem(sku) {
+    // call updateCart in App.js to increment item in cart by 1
+    // (int) --> null
+    handleClick(sku) {
         this.props.updateCart(sku, 1);
     }
-
-    // prbly gonna need a function to communicate menu <-> menu item
-    // and menu <-> app for disabled menuitems
 
     updateDisable() {
         // input :

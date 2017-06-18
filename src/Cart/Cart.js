@@ -7,18 +7,19 @@ class Cart extends Component {
     render() {
 
         let cartStyle = {
-            height: 400,
-            width: 200,
-            backgroundColor: 'lightblue',
-            position: 'absolute',
-            left: 600,
-            top: 0
-        }
-
-        let cartItemStyle = {
-            height: '80%',
-            overflow: 'scroll',
-            overflowX: 'hidden'
+            cart : {
+                height: 400,
+                width: 200,
+                backgroundColor: 'lightblue',
+                position: 'absolute',
+                left: 600,
+                top: 0
+            },
+            cartItemList : {
+                height: '80%',
+                overflow: 'scroll',
+                overflowX: 'hidden'
+            }
         };
 
         var cartItems = [];
@@ -43,8 +44,8 @@ class Cart extends Component {
         }
 
         return (
-            <div style={cartStyle}>
-                <div style={cartItemStyle}>
+            <div style={cartStyle.cart}>
+                <div style={cartStyle.cartItemList}>
                     {cartItems}
                 </div>
                 <hr />

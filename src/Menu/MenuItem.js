@@ -4,13 +4,14 @@ class MenuItem extends Component {
 
     constructor(props) {
       super(props);
-      this.onClick = this.onClick.bind(this);
+
+      this.onSelectMenuItem = this.onSelectMenuItem.bind(this);
     }
 
-    // change name of onclick
-    onClick(e) {
-        e.preventDefault();
-        this.props.selectMenuItem(this.props.item.sku);
+    // call onSelect func passed from Menu
+    // () --> null
+    onSelectMenuItem() {
+        this.props.onSelect(this.props.item.sku);
     }
 
     render() {
@@ -21,7 +22,7 @@ class MenuItem extends Component {
         };
 
         return (
-            <div style={menuItemstyle} onClick={this.onClick}>
+            <div style={menuItemstyle} onClick={this.onSelectMenuItem}>
                 {this.props.item.productName}
                 <br/>
                 {'$' + this.props.item.price}
