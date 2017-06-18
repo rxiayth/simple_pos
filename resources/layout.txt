@@ -1,8 +1,19 @@
+Layout.
+App
+    -> Menu
+        -> MenuItem
+    -> Cart
+        -> CartItem
+        -> Total
+    -> ActionBar
+        -> Action
+
 App.js
     - the main container of the whole system.
 
     - has 'menu' : the product name, sku, price, etc
     - has 'inventory' : the volume of each sku
+    -
 
     - 3 components
         1. Menu.js
