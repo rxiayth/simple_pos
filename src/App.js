@@ -3,6 +3,7 @@ import DRINK_LIST from './Database.js' // change to json
 import Menu from './Menu/Menu.js'
 import Cart from './Cart/Cart.js'
 import ActionBar from './Action/ActionBar.js'
+import Setting from './Setting/Setting.js'
 
 class App extends Component {
 
@@ -12,7 +13,8 @@ class App extends Component {
 			menu: {}, 				// {sku: {name, price, sku} }
 			inventory: {}, 			// {sku : quantity}
 			cart: {}, 				// {sku : {name, price, quantity} }
-			disabledMenuItem: [] 	// [sku1, sku2, sku3]
+			disabledMenuItem: [], 	// [sku1, sku2, sku3]
+			currentPage: 1			// 1 default = menu, 2 = settings
 		}
 
 		this.updateCart = this.updateCart.bind(this);
@@ -54,14 +56,24 @@ class App extends Component {
 			width: 800
 		}
 
+		let mainPage = null;
+		if (this.state.currentPage === 1) {
+			mainPage =
+			<Menu
+				menu={this.state.menu}
+				disabledMenuItem= {this.state.disabledMenuItem}
+				selectMenuItem={this.selectMenuItem}
+				updateCart={this.updateCart}
+			/>;
+		} else if (this.state.currentPage === 2) {
+			mainPage =
+			<Setting
+			/>;
+		}
+
         return (
             <div style={appStyle}>
-				<Menu
-					menu={this.state.menu}
-					disabledMenuItem= {this.state.disabledMenuItem}
-					selectMenuItem={this.selectMenuItem}
-					updateCart={this.updateCart}
-				/>
+				{mainPage}
 				<Cart
 					cart={this.state.cart}
 				/>
@@ -138,7 +150,11 @@ class App extends Component {
 	cancel() { // save for later
 	}
 
+	// toggle currentPage number between 1(menu) and 2(setting)
+	// () --> null
 	settings() { // change menu section into settings section
+		let currentPage = this.state.currentPage;
+		this.setState({currentPage : (2 === currentPage) ? 1 : 2});
 	}
 }
 

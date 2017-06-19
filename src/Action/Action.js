@@ -5,14 +5,12 @@ class Action extends Component {
 		var actionStyle = {
 			height: '50%',
 			width: '50%',
-			margin: '-1px',
 			float: 'left',
 			textAlign: 'center',
-			border: '1px solid black'
 		}
 
 		return (
-			<div onClick={this.props.func}>
+			<div style={actionStyle} onClick={this.props.func}>
 				{this.props.name}
 			</div>
 		)

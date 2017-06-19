@@ -13,7 +13,8 @@ class Menu extends Component {
         let menuStyle = {
             height: 600,
             width: 600,
-            backgroundColor: 'yellow'
+            backgroundColor: 'yellow',
+			position: 'absolute'
         };
 
         var menuItems = [];
