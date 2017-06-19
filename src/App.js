@@ -10,16 +10,18 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			menu: {}, 				// {sku: {name, price, sku, quantity} }
-			inventory: {}, 			// {sku : quantity}
-			cart: {}, 				// {sku : {name, price, quantity} }
-			disabledMenuItem: [] 	// [sku1, sku2, sku3]
+			menu: {}, 				// { sku: {name, price, sku} }
+			inventory: {}, 			// { sku : quantity }
+			cart: {}, 				// { sku : {name, price, quantity, isMaxedOut} }
+			maxedOutList: [] 	// [ sku1, sku2, sku3]
 		}
 
 		this.clear = this.clear.bind(this);
 		this.purchase = this.purchase.bind(this);
 		this.cancel = this.cancel.bind(this);
 		this.settings = this.settings.bind(this);
+		this.updateCart = this.updateCart.bind(this);
+		this.getCartQuantity = this.getCartQuantity.bind(this);
 	}
 
 	componentWillMount() {
@@ -49,8 +51,8 @@ class App extends Component {
 			inventory[item.sku] = item.quantity
 		});
 
-		// console.dir(menu);
-		// console.dir(inventory);
+		console.dir(menu);
+		console.dir(inventory);
 
 		this.state.menu = menu;
 		this.state.inventory = inventory;	
@@ -64,6 +66,8 @@ class App extends Component {
 				<Menu
 					menu={this.state.menu}
 					inventory={this.state.inventory}
+					cart={this.state.cart}
+					updateCart={this.updateCart}
 				/>
 				<Cart
 					cart={this.state.cart}
@@ -77,6 +81,55 @@ class App extends Component {
             </div>
         );
     }
+
+	updateCart(action, sku) {
+        /* 
+            (action, sku) --> ()
+            updates cart for display
+        */
+        let quantity = this.getCartQuantity(sku);
+        quantity = this.updateQuantity(action, quantity);
+        const drink = this.state.menu[sku];
+        
+        if (quantity > 0 && !(sku in this.state.maxedOutList)){
+            this.state.cart[sku] = {
+                name: drink.name,
+                quantity: quantity,
+                price: drink.price
+            }
+            this.setState({cart:this.state.cart});
+        } 
+        if (quantity == this.state.inventory[sku]){
+            console.log('maxed');
+            this.state.maxedOutList.push(sku);
+            this.setState({maxedOutList:this.state.maxedOutList});
+        }
+
+        console.dir(this.state.cart[sku].quantity);
+    }
+
+    getCartQuantity(sku) {
+        /*
+            returns quantity in cart
+        */
+        return (sku in this.state.cart)? this.state.cart[sku].quantity : 0;
+    }
+    updateQuantity(action, quantity) {
+        /*
+            returns new quantity; inc or dec accordingly
+        */
+        switch(action) {
+            case 'increment':
+                return quantity + 1;
+                break;
+            case 'decrement':
+                return quantity -1;
+                break;
+            default:
+                console.warn('no actions passed to updateCart');
+        }
+    }
+    
 
 	clear() {
 		/* 

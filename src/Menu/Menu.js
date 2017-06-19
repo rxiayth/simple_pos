@@ -6,76 +6,42 @@ class Menu extends Component {
 
     constructor(props) {
         super(props);
-        this.updateCart = this.updateCart.bind(this);
-        this.selectMenuItem = this.selectMenuItem.bind(this); 
-
+        this.incrementCartItem = this.incrementCartItem.bind(this);
 
     }
 
-    selectMenuItem(sku) {
-        this.updateCart(sku);
-        this.updateDisableMenuItem(sku);
-    }
-    updateCart(sku) {
-        const name = this.state.menu[sku].name;
-        const isAlreadyInCart = sku in this.state.cart;
-        const quantity = (isAlreadyInCart ? this.state.cart[sku].quantity+1 : 1);
-        // get quantiy prameter, use quantity instaed of if 1
-
-        const price = this.state.menu[sku].price;
-
-        this.state.cart[sku] = {
-            name,
-            quantity,
-            price
-        };
-
-        this.setState({cart : this.state.cart});
-    }
-    isInStock(sku){
-        const quantity = this.state.cart[sku].quantity;
-        return quantity < this.state.inventory[sku];
-    }
-    // try and see if we can generalize, and se eif we can use it somewer else
-    updateDisableMenuItem(sku) {
-        const itemInStock = this.isInStock(sku);
-        if (!itemInStock) {
-            const curDisabledMenuItem = this.state.disabledMenuItem;
-            curDisabledMenuItem.push(sku);
-            this.setState({disabledMenuItem: curDisabledMenuItem });
-            console.log('maxed out');
-        }
-    }
-    selectMenuItem(sku) {
-        this.props.updateCart(sku, 1);
+    incrementCartItem(sku) {
+        /* 
+            (sku) --> ()
+            increment cart item quantity count
+        */
+        console.log(this);
+        this.props.updateCart('increment', sku);
     }
 
-    // prbly gonna need a function to communicate menu <-> menu item
-    // and menu <-> app for disabled menuDisplay
-
-    updateDisable() {
-        // input :
-        // output :
-        // what its doing
+    decrementCartItem(sku) {
+        /* 
+            (sku) --> ()
+            decrement cart item quantity count
+        */
+        // console.log('removing clicked', sku);
     }
 
-
-
+    
     render() {
-        const menu = this.props.menu;
-        // console.dir(menu);
-        let menuDisplay = Object.keys(menu).map( (sku) => {
-            console.dir(menu[sku]);
-            <MenuItem
-                key={sku}
-                item={menu[sku]}
-                selectMenuItem={this.selectMenuItem}
-                // availability={ !(sku in this.props.disabledMenuItem) }
-            />
+        const menu = this.props.menu;        
+        const menuDisplay = [];
+        Object.keys(menu).map((sku) => {
+            menuDisplay.push(
+                <MenuItem
+                    key={sku}
+                    item={menu[sku]}
+                    incrementCartItem={this.incrementCartItem}
+                    decrementCartItem={this.decrementCartItem}
+                />
+            );
         });
-
-        console.log(menuDisplay);
-
+        
          
         // update css into style
         return (
@@ -83,9 +49,7 @@ class Menu extends Component {
                 {menuDisplay}
             </div>
         );
-    }
-
-  
+    }  
 }
 
 export default Menu;
