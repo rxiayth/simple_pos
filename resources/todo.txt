@@ -1,4 +1,23 @@
 1. figure out how to do borders nicely
+2. is there a way to force certain props to be passed down?
+3. convert layout css back onto css file.
+    note :
+    // This couples your component to the layout system
+    // It reduces the reusability of your component
+    <UserBadge
+     className="col-xs-12 col-sm-6 col-md-8"
+     firstName="Michael"
+     lastName="Chan" />
+
+    // This is much easier to maintain and change
+    <div class="col-xs-12 col-sm-6 col-md-8">
+      <UserBadge
+       firstName="Michael"
+       lastName="Chan" />
+    </div>
+    For layout support, I often try to design components to be 100% width and height.
+    
+    source : https://stackoverflow.com/questions/26882177/react-js-inline-style-best-practices
 
 
 david
@@ -21,24 +40,10 @@ function(a, b, c, d) {
 }
 
 -- eric
-1. Create setting folder
-    setting.js - empty for now
-
 2. create ?? folder
     button.js
 
-3. on max, disable button
-
-2. style. convert all of css into style -
-
-4. borders on menuItem -
-
-6. swipe to remove(??) -
-
 7. generalize funcs in components
-
-8. click settings to update Menu into Setting
-    - change menu section into setting section
 
 10. css
     mouse hover, onclick color change etc
