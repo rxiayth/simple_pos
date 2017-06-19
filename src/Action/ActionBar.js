@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
-import '../App.css';
 import Action from './Action.js';
 
 class ActionBar extends Component {
 
     render() {
+        let actionBarStyle = {
+            height: 200,
+            width: 200,
+            backgroundColor: 'lightgreen',
+            position: 'absolute',
+            left: 600,
+            top: 400
+        }
         // only keep string values
         // use one dict from app
         // instead of sending 4 props from app
@@ -29,7 +36,7 @@ class ActionBar extends Component {
         // loop through instead of hardcoding 4
         // put upper limmit of 4, const MAX_ACTIONS = 4
         return (
-            <div className="actions" >
+            <div style={actionBarStyle}>
                 <Action
                     name={TYPES_OF_ACTIONS.purchase.name}
                     func={TYPES_OF_ACTIONS.purchase.func}

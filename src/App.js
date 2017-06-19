@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
 import DATABASE from './Database.js'
 import Menu from './Menu/Menu.js'
 import Cart from './Cart/Cart.js'
 import ActionBar from './Action/ActionBar.js'
+import Setting from './Setting/Setting.js'
 
 class App extends Component {
 
@@ -13,7 +13,9 @@ class App extends Component {
 			menu: {}, 				// { sku: {name, price, sku} }
 			inventory: {}, 			// { sku : quantity }
 			cart: {}, 				// { sku : {name, price, quantity, isMaxedOut} }
-			maxedOutList: [] 	// [ sku1, sku2, sku3]
+			maxedOutList: [], 		// [ sku1, sku2, sku3]
+			currentPage: 1			// 1 default = menu, 2 = settings
+
 		}
 
 		this.clear = this.clear.bind(this);
@@ -61,14 +63,30 @@ class App extends Component {
 	}
 
     render() {
+
+		let appStyle = {
+			height: 600,
+			width: 800
+		}
+
+		let mainPage = null;
+		if (this.state.currentPage === 1) {
+			mainPage =
+			<Menu
+				menu={this.state.menu}
+				disabledMenuItem= {this.state.disabledMenuItem}
+				selectMenuItem={this.selectMenuItem}
+				updateCart={this.updateCart}
+			/>;
+		} else if (this.state.currentPage === 2) {
+			mainPage =
+			<Setting
+			/>;
+		}
+
         return (
-            <div className='App'>
-				<Menu
-					menu={this.state.menu}
-					inventory={this.state.inventory}
-					cart={this.state.cart}
-					updateCart={this.updateCart}
-				/>
+            <div style={appStyle}>
+				{mainPage}
 				<Cart
 					cart={this.state.cart}
 				/>
@@ -159,10 +177,11 @@ class App extends Component {
 		*/
 	}
 
-	settings() { 
-		/*
-			change menu section into settings section
-		*/
+	// toggle currentPage number between 1(menu) and 2(setting)
+	// () --> null
+	settings() { // change menu section into settings section
+		let currentPage = this.state.currentPage;
+		this.setState({currentPage : (2 === currentPage) ? 1 : 2});
 	}
 }
 

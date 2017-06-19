@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
-import '../App.css';
 
 class CartItem extends Component {
 
     render() {
+        let cartItemStyle = {
+            height: '10%',
+            width: '100%',
+            backgroundColor: 'teal'
+        }
+
         var productName = this.props.productName;
         var quantity = this.props.quantity;
 
         return (
-            <div>
-                <div className='productName'> {/* or style= xxx */}
-                    {productName}
-                </div>
-                <div className='quantity'>
-                    {quantity}
-                </div>
+            <div style={cartItemStyle}>
+                {productName}
+                {quantity}
             </div>
         );
     }
-        // +/- button
 }
 
 export default CartItem;

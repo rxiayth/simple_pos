@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../App.css';
 import MenuItem from './MenuItem.js';
 
 class Menu extends Component {
@@ -28,7 +27,17 @@ class Menu extends Component {
     }
 
     
+  
+         
+        // update css into style
     render() {
+        let menuStyle = {
+            height: 600,
+            width: 600,
+            backgroundColor: 'yellow',
+			position: 'absolute'
+        };
+
         const menu = this.props.menu;        
         const menuDisplay = [];
         Object.keys(menu).map((sku) => {
@@ -41,15 +50,14 @@ class Menu extends Component {
                 />
             );
         });
-        
-         
-        // update css into style
+
         return (
-            <div className='menu' >
+            <div style={menuStyle}>
                 {menuDisplay}
             </div>
         );
-    }  
+    }
+
 }
 
 export default Menu;

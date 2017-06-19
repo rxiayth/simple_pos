@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../App.css';
 
 class MenuItem extends Component {
     
@@ -15,7 +14,7 @@ class MenuItem extends Component {
         // console.log(this.props.item.sku);
         this.incrementCartItem(this.props.item.sku);
     }
-
+    
     incrementCartItem(sku) {
         this.props.incrementCartItem(sku);
     }
@@ -25,13 +24,22 @@ class MenuItem extends Component {
 
 
     render() {
+        let menuItemstyle = {
+            height: '20%',
+            width: '20%',
+            float: 'left'
+        };
+
         return (
-            <div>
+
+            <div style={menuItemstyle} onClick={this.onSelectMenuItem}>
                 {this.props.item.name}<br/>
                 {'$' + this.props.item.price}<br/>
                 <button onClick={this.onClick}> ++++ </button>
                 <button onClick={this.props.incrementCartItem}> + </button>
                 <button onClick={this.props.decrementCartItem}> - </button>
+
+                
             </div>
         )
     }

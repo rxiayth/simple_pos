@@ -1,11 +1,27 @@
 import React, { Component } from 'react';
-import '../App.css';
 import CartItem from './CartItem.js';
 import Total from './Total.js';
 
 class Cart extends Component {
 
     render() {
+
+        let cartStyle = {
+            cart : {
+                height: 400,
+                width: 200,
+                backgroundColor: 'lightblue',
+                position: 'absolute',
+                left: 600,
+                top: 0
+            },
+            cartItemList : {
+                height: '80%',
+                overflow: 'scroll',
+                overflowX: 'hidden'
+            }
+        };
+
         var cartItems = [];
         var total = 0;
 
@@ -28,8 +44,8 @@ class Cart extends Component {
         }
 
         return (
-            <div className='cart' >
-                <div className='cartItems' >
+            <div style={cartStyle.cart}>
+                <div style={cartStyle.cartItemList}>
                     {cartItems}
                 </div>
                 <hr />
