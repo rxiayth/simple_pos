@@ -130,128 +130,103 @@ const DATABASE = {
 	INVENTORY: [
 		{ 
 			sku: '00102',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00103',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00104',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00105',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00201',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00202',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00203',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00204',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00101',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00205',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00301',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00302',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00303',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00304',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00305',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00401',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00402',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00403',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00404',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00405',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00406',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00407',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00408',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00400',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		},
 		{ 
 			sku: '00409',
-			quantity: 10,
-			maxedOut: false
+			quantity: 10
 		}
 	]
 }

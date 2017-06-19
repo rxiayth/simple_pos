@@ -53,8 +53,8 @@ class App extends Component {
 			inventory[item.sku] = item.quantity
 		});
 
-		console.dir(menu);
-		console.dir(inventory);
+		// console.dir(menu);
+		// console.dir(inventory);
 
 		this.state.menu = menu;
 		this.state.inventory = inventory;	
@@ -100,31 +100,49 @@ class App extends Component {
         );
     }
 
-	updateCart(action, sku) {
-        /* 
-            (action, sku) --> ()
-            updates cart for display
-        */
-        let quantity = this.getCartQuantity(sku);
-        quantity = this.updateQuantity(action, quantity);
-        const drink = this.state.menu[sku];
-        
-        if (quantity > 0 && !(sku in this.state.maxedOutList)){
-            this.state.cart[sku] = {
-                name: drink.name,
-                quantity: quantity,
-                price: drink.price
-            }
-            this.setState({cart:this.state.cart});
-        } 
-        if (quantity == this.state.inventory[sku]){
-            console.log('maxed');
-            this.state.maxedOutList.push(sku);
-            this.setState({maxedOutList:this.state.maxedOutList});
-        }
 
-        console.dir(this.state.cart[sku].quantity);
-    }
+	// updateCart(action, sku) {
+ //        /* 
+ //            (action, sku) --> ()
+ //            updates cart for display
+ //        */
+ //        let quantity = this.getCartQuantity(sku);
+ //        quantity = this.updateQuantity(action, quantity);
+ //        const drink = this.state.menu[sku];
+        
+ //        if (quantity > 0 && !(sku in this.state.maxedOutList)){
+ //            this.state.cart[sku] = {
+ //                name: drink.name,
+ //                quantity: quantity,
+ //                price: drink.price
+ //            }
+ //            this.setState({cart:this.state.cart});
+ //        } 
+ //        if (quantity == this.state.inventory[sku]){
+ //            console.log('maxed');
+ //            this.state.maxedOutList.push(sku);
+ //            this.setState({maxedOutList:this.state.maxedOutList});
+ //        }
+
+ //        console.dir(this.state.cart[sku].quantity);
+ //    }
+
+ 	updateCart(sku, quantity) {
+ 		const isInCart = sku in this.state.cart;
+ 		let newQuantity = null;
+ 		if (isInCart){
+ 			newQuantity = this.state.cart[sku].quantity + quantity
+ 		} else {
+ 			newQuantity = quantity;
+		}
+		this.state.cart[sku] = newQuantity;
+		if (newQuantity <= 0) {
+ 				delete this.state.cart[sku];
+		}
+
+ 		this.state.cart({cart:this.state.cart})
+
+ 	}
 
     getCartQuantity(sku) {
         /*

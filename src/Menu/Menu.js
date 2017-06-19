@@ -5,29 +5,16 @@ class Menu extends Component {
 
     constructor(props) {
         super(props);
-        this.incrementCartItem = this.incrementCartItem.bind(this);
+        this.onSelect = this.onSelect.bind(this);
 
-    }
-
-    incrementCartItem(sku) {
-        /* 
-            (sku) --> ()
-            increment cart item quantity count
-        */
-        console.log(this);
-        this.props.updateCart('increment', sku);
-    }
-
-    decrementCartItem(sku) {
-        /* 
-            (sku) --> ()
-            decrement cart item quantity count
-        */
-        // console.log('removing clicked', sku);
     }
 
     
-  
+    onSelect(sku, quantity) {
+        this.props.updateCart(sku, quantity)
+    }
+
+
          
         // update css into style
     render() {
@@ -45,8 +32,7 @@ class Menu extends Component {
                 <MenuItem
                     key={sku}
                     item={menu[sku]}
-                    incrementCartItem={this.incrementCartItem}
-                    decrementCartItem={this.decrementCartItem}
+                    onSelect={this.onSelect}
                 />
             );
         });

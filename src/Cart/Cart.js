@@ -22,19 +22,19 @@ class Cart extends Component {
             }
         };
 
-        var cartItems = [];
-        var total = 0;
+        let cartItems = [];
+        let total = 0;
 
-        for (var sku in this.props.cart) {
+        for (let sku in this.props.cart) {
             if (this.props.cart.hasOwnProperty(sku)) {
-                var productName = this.props.cart[sku].productName;
-                var quantity = this.props.cart[sku].quantity;
-                var price = this.props.cart[sku].price;
+                let name = this.props.cart[sku].name;
+                let quantity = this.props.cart[sku].quantity;
+                let price = this.props.cart[sku].price;
 
                 cartItems.push(
                     <CartItem
-                        key={sku}
-                        productName={productName}
+                        key={sku} 
+                        name={name}
                         quantity={quantity}
                     />
                 );

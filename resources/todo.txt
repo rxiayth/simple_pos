@@ -26,17 +26,11 @@ david
 	- create drinks with fixed values
 	- create inventory with fixed values 
 
-12. convert var into let and const & doc		30%
-5. plus +/- button on cartitem					30$
-
-
-
-
-1. change functions so that it is only used in immediate child.
-
-3. disable the button when maxed
-
-11. convert internal functions to _blahblah
+12. convert var into let and const & doc		80%
+5. plus +/- button on cartitem					25%
+1. change functions so that it is only used in immediate child.  0%
+3. disable the button when maxed				0%
+11. convert internal functions to _blahblah		0%
 
 
 

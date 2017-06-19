@@ -9,12 +9,12 @@ class CartItem extends Component {
             backgroundColor: 'teal'
         }
 
-        var productName = this.props.productName;
+        var name = this.props.name;
         var quantity = this.props.quantity;
 
         return (
             <div style={cartItemStyle}>
-                {productName}
+                {name}
                 {quantity}
             </div>
         );
