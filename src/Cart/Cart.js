@@ -7,18 +7,20 @@ class Cart extends Component {
     render() {
 
         let cartStyle = {
-            cart : {
-                height: 400,
-                width: 200,
-                backgroundColor: 'lightblue',
-                position: 'absolute',
-                left: 600,
-                top: 0
+            cart: {
+                height: '100%',
+                width: '100%'
             },
-            cartItemList : {
+            cartList : {
                 height: '80%',
+                width: '100%',
                 overflow: 'scroll',
-                overflowX: 'hidden'
+                overflowX: 'hidden',
+                float: 'left'
+            },
+            cartTotal : {
+                height: '20%',
+                width: '100%'
             }
         };
 
@@ -33,9 +35,10 @@ class Cart extends Component {
 
                 cartItems.push(
                     <CartItem
-                        key={sku} 
+                        key={sku}
                         name={name}
                         quantity={quantity}
+                        updateCart={this.props.udpateCart}
                     />
                 );
 
@@ -45,13 +48,15 @@ class Cart extends Component {
 
         return (
             <div style={cartStyle.cart}>
-                <div style={cartStyle.cartItemList}>
+                <div style={cartStyle.cartList}>
                     {cartItems}
                 </div>
                 <hr />
-                <Total
-                    total={total.toFixed(2)}
-                />
+                <div style={cartStyle.cartTotal}>
+                    <Total
+                        total={total}
+                    />
+                </div>
            </div>
         );
     }

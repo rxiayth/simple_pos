@@ -6,44 +6,33 @@ class Menu extends Component {
     constructor(props) {
         super(props);
         this.onSelect = this.onSelect.bind(this);
-
     }
 
-    
     onSelect(sku, quantity) {
-        this.props.updateCart(sku, quantity)
+        this.props.updateCart(sku, quantity);
     }
 
-
-         
-        // update css into style
     render() {
         let menuStyle = {
-            height: 600,
-            width: 600,
-            backgroundColor: 'yellow',
-			position: 'absolute'
+            height: '100%',
+            width: '100%',
         };
 
-        const menu = this.props.menu;        
-        const menuDisplay = [];
-        Object.keys(menu).map((sku) => {
-            menuDisplay.push(
-                <MenuItem
-                    key={sku}
-                    item={menu[sku]}
-                    onSelect={this.onSelect}
-                />
-            );
-        });
-
+        const menu = this.props.menu;
         return (
             <div style={menuStyle}>
-                {menuDisplay}
+                {Object.keys(menu).map((sku) => {
+                    return (
+                        <MenuItem
+                            key={sku}
+                            item={menu[sku]}
+                            onSelect={this.onSelect}
+                        />
+                    );
+                })};
             </div>
         );
     }
-
 }
 
 export default Menu;

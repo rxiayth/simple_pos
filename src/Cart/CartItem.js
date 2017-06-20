@@ -15,6 +15,7 @@ class CartItem extends Component {
         return (
             <div style={cartItemStyle}>
                 {name}
+                --
                 {quantity}
             </div>
         );

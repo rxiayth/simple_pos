@@ -16,36 +16,22 @@
        lastName="Chan" />
     </div>
     For layout support, I often try to design components to be 100% width and height.
-    
-    source : https://stackoverflow.com/questions/26882177/react-js-inline-style-best-practices
 
+    source : https://stackoverflow.com/questions/26882177/react-js-inline-style-best-practices
+4. why's 100% 100% needed?
+5. figureout deep copy
 
 david
 9. database 									DONE
 	- use JSON format
 	- create drinks with fixed values
-	- create inventory with fixed values 
+	- create inventory with fixed values
 
 12. convert var into let and const & doc		80%
 5. plus +/- button on cartitem					25%
 1. change functions so that it is only used in immediate child.  0%
 3. disable the button when maxed				0%
 11. convert internal functions to _blahblah		0%
-
-
-
-
-
-
-
-
-// explanation sentence.
-// (a, b, c, d) --> boolean
-function(a, b, c, d) {
-
-}
-
-
 
 -- eric
 2. create ?? folder
@@ -65,3 +51,6 @@ function(a, b, c, d) {
 14. add pictures
 15. confirmation on purchase (not pop up)
 16. ??
+
+login page.
+database - add user name/pass

@@ -9,8 +9,6 @@ class ActionBar extends Component {
             width: 200,
             backgroundColor: 'lightgreen',
             position: 'absolute',
-            left: 600,
-            top: 400
         }
         // only keep string values
         // use one dict from app
