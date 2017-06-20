@@ -5,6 +5,8 @@ import Cart from './Cart/Cart.js'
 import ActionBar from './Action/ActionBar.js'
 import Setting from './Setting/Setting.js'
 
+import './App.css'
+
 class App extends Component {
 
 	constructor(props) {
@@ -13,162 +15,123 @@ class App extends Component {
 			menu: {}, 				// { sku: {name, price, sku} }
 			inventory: {}, 			// { sku : quantity }
 			cart: {}, 				// { sku : {name, price, quantity, isMaxedOut} }
+
 			maxedOutList: [], 		// [ sku1, sku2, sku3]
 			currentPage: 1			// 1 default = menu, 2 = settings
-
 		}
+
+		this.updateCart = this.updateCart.bind(this);
 
 		this.clear = this.clear.bind(this);
 		this.purchase = this.purchase.bind(this);
 		this.cancel = this.cancel.bind(this);
 		this.settings = this.settings.bind(this);
-		this.updateCart = this.updateCart.bind(this);
-		this.getCartQuantity = this.getCartQuantity.bind(this);
 	}
 
 	componentWillMount() {
-		/*  
-			() --> ()
-			why we load this here again? 
-		*/
-
-		this.initializeDrinkList();
+		this._initializeMenu();
 	}
 
-	initializeDrinkList() {
-		/*  
-			() --> ()
-			initializes App with Drinks 
-		*/
-		
-		const DRINKS = DATABASE.DRINKS;
-		const INVENTORY = DATABASE.INVENTORY;
+	/*	initializes state 'menu' with DrinkList from Database.js
+	    () --> null
+	*/
+	_initializeMenu() {
+		const drinks = DATABASE.DRINKS;
+		const volume = DATABASE.INVENTORY;
+
 		let menu = {};
 		let inventory = {};
-		DRINKS.map( (drink) => {
-			menu[drink.sku] = drink 
+
+		// load the list of drinks into menu
+		drinks.map( (drink) => {
+			menu[drink.sku] = drink
 		});
 
-		INVENTORY.map( (item) => {
+		// load the list of inventory into inventory
+		volume.map( (item) => {
 			inventory[item.sku] = item.quantity
 		});
 
-		// console.dir(menu);
-		// console.dir(inventory);
-
-		this.state.menu = menu;
-		this.state.inventory = inventory;	
-		this.setState({menu:this.state.menu});
-		this.setState({inventory:this.state.inventory});
+		// set state
+		this.setState({menu:menu});
+		this.setState({inventory:inventory});
 	}
 
     render() {
-
-		let appStyle = {
-			height: 600,
-			width: 800
-		}
-
+		// decide which main page to load
 		let mainPage = null;
 		if (this.state.currentPage === 1) {
 			mainPage =
-			<Menu
-				menu={this.state.menu}
-				disabledMenuItem= {this.state.disabledMenuItem}
-				selectMenuItem={this.selectMenuItem}
-				updateCart={this.updateCart}
-			/>;
+				<Menu
+					menu={this.state.menu}
+					maxedOutList={this.state.maxedOutList}
+					updateCart={this.updateCart}
+				/>;
 		} else if (this.state.currentPage === 2) {
 			mainPage =
-			<Setting
-			/>;
+				<Setting
+				/>;
 		}
 
         return (
-            <div style={appStyle}>
-				{mainPage}
-				<Cart
-					cart={this.state.cart}
-				/>
-				<ActionBar
-					clear={this.clear}
-					purchase={this.purchase}
-					cancel={this.cancel}
-					settings={this.settings}
-				/>
+            <div className='app'>
+				<div className='main'>
+					{mainPage}
+				</div>
+				<div className='sidebar'>
+					<Cart
+						cart={this.state.cart}
+						updateCart={this.updateCart}
+					/>
+				</div>
+				<div className='actionbar'>
+					<ActionBar
+						updateCart={this.updateCart}
+						updateInventory={this.updateInventory}
+					/>
+				</div>
             </div>
         );
     }
 
-
-	// updateCart(action, sku) {
- //        /* 
- //            (action, sku) --> ()
- //            updates cart for display
- //        */
- //        let quantity = this.getCartQuantity(sku);
- //        quantity = this.updateQuantity(action, quantity);
- //        const drink = this.state.menu[sku];
-        
- //        if (quantity > 0 && !(sku in this.state.maxedOutList)){
- //            this.state.cart[sku] = {
- //                name: drink.name,
- //                quantity: quantity,
- //                price: drink.price
- //            }
- //            this.setState({cart:this.state.cart});
- //        } 
- //        if (quantity == this.state.inventory[sku]){
- //            console.log('maxed');
- //            this.state.maxedOutList.push(sku);
- //            this.setState({maxedOutList:this.state.maxedOutList});
- //        }
-
- //        console.dir(this.state.cart[sku].quantity);
- //    }
-
+	/* 	updates one specific product in cart by certain amount.
+	*	(str, int) --> null
+	*/
  	updateCart(sku, quantity) {
- 		const isInCart = sku in this.state.cart;
- 		let newQuantity = null;
- 		if (isInCart){
- 			newQuantity = this.state.cart[sku].quantity + quantity
- 		} else {
- 			newQuantity = quantity;
+		const name = this.state.menu[sku].name;
+		const price = this.state.menu[sku].price;
+
+		let tmpCart = JSON.parse(JSON.stringify(this.state.cart));
+
+		const isInCart = sku in this.state.cart;
+ 		let newQuantity = isInCart
+			? this.state.cart[sku].quantity + quantity
+			: quantity;
+
+		tmpCart[sku] = {
+			name : name,
+			price : price,
+			quantity : newQuantity
 		}
-		this.state.cart[sku] = newQuantity;
+
+		// delete possible 0 or -1 value from cart
 		if (newQuantity <= 0) {
- 				delete this.state.cart[sku];
+			delete tmpCart[sku];
 		}
 
- 		this.state.cart({cart:this.state.cart})
-
+ 		this.setState({cart:tmpCart})
  	}
 
-    getCartQuantity(sku) {
-        /*
-            returns quantity in cart
-        */
-        return (sku in this.state.cart)? this.state.cart[sku].quantity : 0;
-    }
-    updateQuantity(action, quantity) {
-        /*
-            returns new quantity; inc or dec accordingly
-        */
-        switch(action) {
-            case 'increment':
-                return quantity + 1;
-                break;
-            case 'decrement':
-                return quantity -1;
-                break;
-            default:
-                console.warn('no actions passed to updateCart');
-        }
-    }
-    
+	/* 	update inventory of product <sku> by amount of <quantity>
+		(str, int) --> null
+	*/
+	updateInventory(sku, quantity) {
+	}
 
+
+	///////////////// clera below
 	clear() {
-		/* 
+		/*
 			() --> ()
 			sets cart to {};
 		*/
@@ -180,16 +143,16 @@ class App extends Component {
 		/*
 			var confirmation = confirm("Confirm purchase ");
 		*/
-		
-			var curInventory = this.state.inventory;
-			for (var sku in this.state.cart) {
-				curInventory[sku] -= this.state.cart[sku].quantity;
-			};
-			this.setState({inventory: curInventory});
-			this.clear();
+
+		var curInventory = this.state.inventory;
+		for (var sku in this.state.cart) {
+			curInventory[sku] -= this.state.cart[sku].quantity;
+		};
+		this.setState({inventory: curInventory});
+		this.clear();
 	}
 
-	cancel() { 
+	cancel() {
 		/*
 			save for later
 		*/
@@ -200,6 +163,11 @@ class App extends Component {
 	settings() { // change menu section into settings section
 		let currentPage = this.state.currentPage;
 		this.setState({currentPage : (2 === currentPage) ? 1 : 2});
+	}
+
+	// return a copy of the state
+	// (str) --> object
+	copyState(stateName) {
 	}
 }
 
