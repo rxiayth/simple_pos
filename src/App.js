@@ -21,6 +21,7 @@ class App extends Component {
 		}
 
 		this.updateCart = this.updateCart.bind(this);
+		// updatein, update curp.
 
 		this.clear = this.clear.bind(this);
 		this.purchase = this.purchase.bind(this);
@@ -126,6 +127,13 @@ class App extends Component {
 		(str, int) --> null
 	*/
 	updateInventory(sku, quantity) {
+	}
+
+	/* 	update state 'curerntPage' to given <page>
+		(int) --> null
+	*/
+	updateCurrentPage(pageNum) {
+
 	}
 
 

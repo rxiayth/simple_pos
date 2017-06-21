@@ -1,5 +1,5 @@
 const CONSTANTS = {
-    ACTION = {
+    ACTIONS = {
         PURCHASE : 'PURCHASE',
         CLEAR : 'CLEAR',
         CANCEL : 'CANCEL',
