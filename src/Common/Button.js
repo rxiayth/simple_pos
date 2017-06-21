@@ -26,4 +26,10 @@ class Button extends Component {
     }
 }
 
+Button.propTypes = {
+    func : PropTypes.func.isRequired,
+
+    height : PropTypes.any.isRequired,
+    width : PropTypes.any.isRequired,
+}
 export default Button;
