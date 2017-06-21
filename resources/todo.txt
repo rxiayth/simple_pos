@@ -1,5 +1,7 @@
 1. figure out how to do borders nicely
 2. is there a way to force certain props to be passed down?
+    prop check
+
 3. convert layout css back onto css file.
     note :
     // This couples your component to the layout system
@@ -19,38 +21,61 @@
 
     source : https://stackoverflow.com/questions/26882177/react-js-inline-style-best-practices
 4. why's 100% 100% needed?
-5. figureout deep copy
 
-david
-9. database 									DONE
-	- use JSON format
-	- create drinks with fixed values
-	- create inventory with fixed values
+5. figure out deep copy
 
-12. convert var into let and const & doc		80%
-5. plus +/- button on cartitem					25%
-1. change functions so that it is only used in immediate child.  0%
-3. disable the button when maxed				0%
-11. convert internal functions to _blahblah		0%
+6. disable button
 
--- eric
-2. create ?? folder
-    button.js
+7. create button component
 
-7. generalize funcs in components
-
-10. css
+8. css ** skip for now.
     mouse hover, onclick color change etc
     show option on mouse hover
 
--- nxt week
+9. finish editing ACTION
 
-12. funcs commented, parameter, return value set
+NOTE : setup all functions, interactions, etc etc fully.
+    so nxt week we can split up work and push and combine.
 
-13. show info
-14. add pictures
-15. confirmation on purchase (not pop up)
-16. ??
+19~30 of June
+    1. Login Page
+        a. create list in database with user acct/pwd
+        b. login/logout func
+        c. create login.js (login form in main, side empty, login button on action)
+    2. Type of POS
+        a. decide on type of POS
+            1. BC LIQUOR
+        b. update menu
+            - we don't need menu anymore
+            - main page = buttons for bunch of functions
+                - think of button list
+    3. Refactoring
+        a. create new folders (main, side, top, etc)
+        b. move/update files accordingly
+        c. convert page numbers to constants
+        d. create 'button' for general use
+        e. new css/folder/files for topbar
+            - display user info
+            - time/date?
+            - move settings to topbar
+        f. input/output 'locations' from/to database
+    4. inventory
 
-login page.
-database - add user name/pass
+
+for weeks to come
+    1. database
+    2. user - locatoin
+    3. shipment
+
+    100. hosting
+----------------
+    1. purchase action
+        a. timestamp transaction id, tied with user/seller/location
+            - need database (mostly tables)
+    - shipments
+    - when out of stock, place order, cancel
+    - search for purchase
+    - serach for product
+    - serach other store's inventory
+    - show my own invnetory
+    - category product
