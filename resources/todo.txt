@@ -52,7 +52,7 @@ NOTE : setup all functions, interactions, etc etc fully.
     3. Refactoring
         E- a. create new folders (main, side, top, etc)
         E- b. move/update files accordingly
-        c. convert page numbers to constants
+        E- c. convert page numbers to constants
         d. create 'button' for general use
         e. new css/folder/files for topbar
             - display user info

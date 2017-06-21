@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import DATABASE from './Database.js';
+import CONSTANTS from './Constants.js';
 
+import Login from './Main/Login.js';
 import Menu from './Main/Menu.js';
 import Setting from './Main/Setting.js';
 import Cart from './Sidebar/Cart.js';
@@ -18,7 +20,7 @@ class App extends Component {
 			cart: {}, 				// { sku : {name, price, quantity, isMaxedOut} }
 
 			maxedOutList: [], 		// [ sku1, sku2, sku3]
-			currentPage: 1			// 1 default = menu, 2 = settings
+			currentPage: CONSTANTS.PAGES.MAIN	// 1 default = menu, 2 = settings
 		}
 
 		this.updateCart = this.updateCart.bind(this);
@@ -62,18 +64,28 @@ class App extends Component {
     render() {
 		// decide which main page to load
 		let mainPage = null;
-		if (this.state.currentPage === 1) {
-			mainPage =
-				<Menu
-					menu={this.state.menu}
-					maxedOutList={this.state.maxedOutList}
-					updateCart={this.updateCart}
-				/>;
-		} else if (this.state.currentPage === 2) {
-			mainPage =
-				<Setting
-				/>;
-		}
+		switch(this.state.currentPage) {
+			case (CONSTANTS.PAGES.MAIN) : {
+				mainPage =
+					<Menu
+						menu={this.state.menu}
+						maxedOutList={this.state.maxedOutList}
+						updateCart={this.updateCart}
+					/>;
+				break;
+			};
+			case (CONSTANTS.PAGES.LOGIN) : {
+				mainPage =
+					<Login
+					/>;
+				break;
+			};
+			case (CONSTANTS.PAGES.SETTINGS) : {
+				mainPage =
+					<Setting
+					/>;
+			};
+		}; // switch
 
         return (
             <div className='app'>
