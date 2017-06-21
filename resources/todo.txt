@@ -50,8 +50,8 @@ NOTE : setup all functions, interactions, etc etc fully.
             - main page = buttons for bunch of functions
                 - think of button list
     3. Refactoring
-        a. create new folders (main, side, top, etc)
-        b. move/update files accordingly
+        E- a. create new folders (main, side, top, etc)
+        E- b. move/update files accordingly
         c. convert page numbers to constants
         d. create 'button' for general use
         e. new css/folder/files for topbar
