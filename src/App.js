@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import DATABASE from './Database.js'
-import Menu from './Menu/Menu.js'
-import Cart from './Cart/Cart.js'
-import ActionBar from './Action/ActionBar.js'
-import Setting from './Setting/Setting.js'
+import DATABASE from './Database.js';
 
-import './App.css'
+import Menu from './Main/Menu.js';
+import Setting from './Main/Setting.js';
+import Cart from './Sidebar/Cart.js';
+import Actionbar from './Actionbar/Actionbar.js';
+
+import './App.css';
 
 class App extends Component {
 
@@ -86,7 +87,7 @@ class App extends Component {
 					/>
 				</div>
 				<div className='actionbar'>
-					<ActionBar
+					<Actionbar
 						updateCart={this.updateCart}
 						updateInventory={this.updateInventory}
 					/>

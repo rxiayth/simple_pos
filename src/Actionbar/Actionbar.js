@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Action from './Action.js';
 
-class ActionBar extends Component {
+class Actionbar extends Component {
 
     render() {
         let actionBarStyle = {
@@ -56,4 +56,4 @@ class ActionBar extends Component {
     }
 }
 
-export default ActionBar;
+export default Actionbar;
