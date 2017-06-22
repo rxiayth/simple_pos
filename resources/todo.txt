@@ -53,8 +53,9 @@ NOTE : setup all functions, interactions, etc etc fully.
         E- a. create new folders (main, side, top, etc)
         E- b. move/update files accordingly
         E- c. convert page numbers to constants
-        d. create 'button' for general use
-        e. new css/folder/files for topbar
+        E- d. create 'button' for general use
+        E- e. new css/folder/files for topbar
+
             - display user info
             - time/date?
             - move settings to topbar

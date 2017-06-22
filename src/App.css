@@ -1,40 +1,50 @@
 .app {
 	margin: 0;
 	padding: 0;
-	height: 600px;
+	min-width: 800px;
+	min-height: 450px;
+}
+
+.topbar {
+	margin: 0;
+	padding: 0;
 	width: 800px;
+	height: 50px;
+	background-color: gray;
+	position: abolute;
+	left: 0px;
+	top: 0px;
 }
 
 .main {
 	margin: 0;
 	padding: 0;
-	height: 600px;
 	width: 600px;
+	height: 400px;
+	background-color: pink;
 	position: absolute;
 	left: 0px;
-	top: 0px;
-	/* background-color: yellow; */
-	/* TODO lighter than yellow color */
+	top: 50px;
 }
 
 .sidebar {
 	margin: 0;
 	padding: 0;
-	height: 400px;
 	width: 200px;
+	height: 300px;
+	background-color: lightblue;
 	position: absolute;
 	left: 600px;
-	top: 0px;
-	background-color: lightblue;
+	top: 50px;
 }
 
 .actionbar {
 	margin: 0;
 	padding: 0;
-	height: 200px;
 	width: 200px;
+	height: 100px;
+	background-color: lightgreen;
 	position: absolute;
 	left: 600px;
-	top: 400px;
-	background-color: lightgreen;
+	top: 350px;
 }
