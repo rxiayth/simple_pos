@@ -34,8 +34,12 @@ POS MVP:
         - make api calls to update purchase history of user
         - make api calls to update purchase history of POS
 
-    
-     
+   
+June 27:
+    - draw out layout for all features
+    - prioritize features for this week
+
+         
 
 
 Some Week:
