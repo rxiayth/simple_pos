@@ -1,3 +1,65 @@
+POS MVP:
+    
+    - Users
+        - Consumer 
+            - CRUD user
+            - Have user info in database; fixed file
+            - Have purchase history in database; fixed file
+            - Search user by name  
+        - Cashier
+            - Login
+            - Logout
+            - Have user info in database; fixed file
+            - Have sales history in database; fixed file
+            - Search user by name
+
+    - Inventory
+        - Product data; name, sku, price, quantity; fixed file
+        - View products
+        - Search products
+        - Update inventory to reflect purchase; database;
+
+    - Basic POS 
+        - Add product to cart
+            - Scanning SKU (not add to cart button
+            - Input SKU manually 
+        - Remove product from cart
+        - Purchase product
+            - Tally cart total
+        - Display summary of purchases for the day   
+
+
+    - Database
+        - convert fixed file to actual database
+        - make api calls to update purchase history of user
+        - make api calls to update purchase history of POS
+
+    
+     
+
+
+Some Week:
+    - view products
+        - have sample database of fixed number of products
+            - give product name
+        - be able to access database
+            - retrieve product from sample database
+        - display products
+            - create component that display product names like chessboard
+            - display p
+
+
+    - purchase products
+        -  update sample database
+            - give product price and quantity
+        - create cart summary 
+            - display products in cart menu
+        - 
+
+
+
+
+
 App turns on
     1. create socket connection to the server
         [ predefined ip/port in config file ]
