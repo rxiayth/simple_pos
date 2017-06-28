@@ -37,9 +37,19 @@ POS MVP:
    
 June 27:
     - draw out layout for all features
+        - https://docs.google.com/drawings/d/1Qsw5UPXaqmva83E9RTsfyZaoSkh3U2nmRy_cdJWMltY/edit?usp=sharing
     - prioritize features for this week
+        - UI/folder structures for cashier login and logout
+        - UI/folder structures for consumer history 
+        - sample consumer database
+        - sample purchase history database
+        - search functionality
+
+
 
          
+
+
 
 
 Some Week:
