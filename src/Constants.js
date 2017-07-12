@@ -8,7 +8,7 @@ const CONSTANTS = {
     PAGES : {
         LOGIN : 'LOGIN',
         MAIN : 'MAIN',
-        SETTINGS : 'SETTINGS'
+        SETTINGS : 'SETTINGS',
         HOME : 'HOME',
         INVENTORY : 'INVENTORY',
         HISTORY : 'HISTORY'
