@@ -19,7 +19,7 @@ class Button extends Component {
         }
 
         return (
-            <div style={buttonStyle} onClick={() => this.props.func())>
+            <div style={buttonStyle} onClick={() => this.props.func()}>
                 {if (name !== null) this.props.name;}
             </div>
         );
