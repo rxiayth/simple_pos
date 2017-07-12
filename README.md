@@ -15,7 +15,7 @@ POS MVP:
 
     - Inventory
         - Product data; name, sku, price, quantity; fixed file
-        - View products
+        - View inventory
         - Search products
         - Update inventory to reflect purchase; database;
 
@@ -38,9 +38,15 @@ POS MVP:
 June 27:
     - draw out layout for all features
         - https://docs.google.com/drawings/d/1Qsw5UPXaqmva83E9RTsfyZaoSkh3U2nmRy_cdJWMltY/edit?usp=sharing
-    - prioritize features for this week
+  
+
+July 2nd:
         - UI/folder structures for cashier login and logout
         - UI/folder structures for consumer history 
+
+
+
+July 3rd: 
         - sample consumer database
         - sample purchase history database
         - search functionality
