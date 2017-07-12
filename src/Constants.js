@@ -9,6 +9,9 @@ const CONSTANTS = {
         LOGIN : 'LOGIN',
         MAIN : 'MAIN',
         SETTINGS : 'SETTINGS'
+        HOME : 'HOME',
+        INVENTORY : 'INVENTORY',
+        HISTORY : 'HISTORY'
     }
 };
 
