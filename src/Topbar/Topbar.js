@@ -18,7 +18,8 @@ class Topbar extends Component {
             width : '15%',
             height : '80%',
             float : 'left',
-            textAlign : 'center'
+            textAlign : 'center',
+            backgroundColor: 'gray'
         };
 
         return (
@@ -26,19 +27,27 @@ class Topbar extends Component {
                 <div
                     style={tabStyle}
                     onClick={() => this._handleClick(CONSTANTS.PAGES.LOGIN)}
-                >{CONSTANTS.PAGES.LOGIN}</div>
+                    >
+                    {CONSTANTS.PAGES.LOGIN}
+                </div>
                 <div
                     style={tabStyle}
                     onClick={() => this._handleClick(CONSTANTS.PAGES.HOME)}
-                >{CONSTANTS.PAGES.HOME}</div>
+                    >
+                    {CONSTANTS.PAGES.HOME}
+                </div>
                 <div
                     style={tabStyle}
                     onClick={() => this._handleClick(CONSTANTS.PAGES.INVENTORY)}
-                >{CONSTANTS.PAGES.INVENTORY}</div>
+                    >
+                    {CONSTANTS.PAGES.INVENTORY}
+                </div>
                 <div
                     style={tabStyle}
                     onClick={() => this._handleClick(CONSTANTS.PAGES.HISTORY)}
-                >{CONSTANTS.PAGES.HISTORY}</div>
+                    >
+                    {CONSTANTS.PAGES.HISTORY}
+                </div>
             </div>
         );
     }

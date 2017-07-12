@@ -1,5 +1,3 @@
-import Login from './Main/Login'
-
 const CONSTANTS = {
     ACTIONS : {
         PURCHASE : 'PURCHASE',
@@ -8,8 +6,7 @@ const CONSTANTS = {
         SETTINGS : 'SETTINGS'
     },
     PAGES : {
-        LOGIN : Login,
-        MAIN : 'MAIN',
+        LOGIN : 'LOGIN',
         SETTINGS : 'SETTINGS',
         HOME : 'HOME',
         INVENTORY : 'INVENTORY',

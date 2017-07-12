@@ -3,10 +3,12 @@ import DATABASE from './Database.js';
 import CONSTANTS from './Constants.js';
 
 import Login from './Main/Login.js';
-import Menu from './Main/Menu.js';
-import Setting from './Main/Setting.js';
+import Home from './Main/Home.js';
+import Inventory from './Main/Inventory.js';
+import History from './Main/History.js';
 import Cart from './Sidebar/Cart.js';
 import Actionbar from './Actionbar/Actionbar.js';
+import Topbar from './Topbar/Topbar.js'
 
 import './App.css';
 
@@ -15,7 +17,9 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			CURRENTPAGE: CONSTANTS.PAGES.LOGIN,	// 1 default = menu, 2 = settings
+
+			currentPage: CONSTANTS.PAGES.LOGIN,	// 1 default = main, 2 = settings
+			pageComponents: { }
 			// menu: {}, 				// { sku: {name, price, sku} }
 			// inventory: {}, 			// { sku : quantity }
 			// cart: {}, 				// { sku : {name, price, quantity, isMaxedOut} }
@@ -32,9 +36,16 @@ class App extends Component {
 		// this.settings = this.settings.bind(this);
 	}
 
-	// componentWillMount() {
-	// 	this._initializeMenu();
-	// }
+	componentWillMount() {
+		let pageComponents = {};
+	 	pageComponents[CONSTANTS.PAGES.LOGIN] = Login;
+		pageComponents[CONSTANTS.PAGES.HOME] = Home;
+		pageComponents[CONSTANTS.PAGES.INVENTORY] = Inventory;
+		pageComponents[CONSTANTS.PAGES.HISTORY] = History;
+	
+		console.log(pageComponents);
+		this.setState({pageComponents})
+	}
 
 	/*	initializes state 'menu' with DrinkList from Database.js
 	    () --> null
@@ -65,24 +76,30 @@ class App extends Component {
 		(int) --> null
 	*/
 	updateCurrentPage(pageName) {
-		this.setState({CURRENTPAGE: pageName});
+		this.setState({currentPage: pageName});
 	}
 
     render() {
 		// decide which main page to load
-		var CurrentPage = this.state.CurrentPage;
-		if(this.state.CURRENTPAGE in Object.keys(CONSTANTS.PAGES)) {
-			var NewComponent = this.updateCurrentPage(CurrentPage);
-		};
+		const CurrentPage = this.state.pageComponents[this.state.currentPage];
+		console.log( CurrentPage)
 		
         return (
         	<div>
-        		<Topbar 
-        			CURRENTPAGE={this.state.CURRENTPAGE}
-        			updateCurrentPage={this.updateCurrentPage} 
-        		/>
-        		{NewComponent}
-        		}
+        		<div className="toolbar">
+	        		<Topbar 
+	        			currentPage={this.state.currentPage}
+	        			updateCurrentPage={this.updateCurrentPage} 
+	        		/>
+	        	</div>
+	        	<div className="sidebar">
+	        	</div>
+        		<div className="main">
+        			<CurrentPage />
+        		</div>
+
+  
+        		
     		</div>
         	
         );
