@@ -15,7 +15,7 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			CurrentPage: CONSTANTS.PAGES.LOGIN,	// 1 default = menu, 2 = settings
+			CURRENTPAGE: CONSTANTS.PAGES.LOGIN,	// 1 default = menu, 2 = settings
 			// menu: {}, 				// { sku: {name, price, sku} }
 			// inventory: {}, 			// { sku : quantity }
 			// cart: {}, 				// { sku : {name, price, quantity, isMaxedOut} }
@@ -61,20 +61,26 @@ class App extends Component {
 	// 	this.setState({inventory:inventory});
 	// }
 
-	updateCurrnetPage(pageName) {
-		this.setState({CurrentPage: pageName});
+	/* 	update state 'curerntPage' to given <page>
+		(int) --> null
+	*/
+	updateCurrentPage(pageName) {
+		this.setState({CURRENTPAGE: pageName});
 	}
 
     render() {
 		// decide which main page to load
 		var CurrentPage = this.state.CurrentPage;
-		if(this.state.currentPage in Object.keys(CONSTANTS.PAGES)) {
-			var NewComponent = this.updateCurrnetPage(CurrentPage);
+		if(this.state.CURRENTPAGE in Object.keys(CONSTANTS.PAGES)) {
+			var NewComponent = this.updateCurrentPage(CurrentPage);
 		};
 		
         return (
         	<div>
-        		<Topbar />
+        		<Topbar 
+        			CURRENTPAGE={this.state.CURRENTPAGE}
+        			updateCurrentPage={this.updateCurrentPage} 
+        		/>
         		{NewComponent}
         		}
     		</div>
@@ -116,12 +122,7 @@ class App extends Component {
 	updateInventory(sku, quantity) {
 	}
 
-	/* 	update state 'curerntPage' to given <page>
-		(int) --> null
-	*/
-	updateCurrentPage(pageNum) {
 
-	}
 
 
 	///////////////// clera below
