@@ -22,34 +22,48 @@ class Topbar extends Component {
             backgroundColor: 'gray'
         };
 
-        return (
-            <div>
-                <div
-                    style={tabStyle}
-                    onClick={() => this._handleClick(CONSTANTS.PAGES.LOGIN)}
-                    >
-                    {CONSTANTS.PAGES.LOGIN}
+        if (this.props.isLoggedIn){
+            return (
+                <div>
+                    <div
+                        style={tabStyle}
+                        onClick={() => this._handleClick(CONSTANTS.PAGES.LOGOUT)}
+                        >
+                        {CONSTANTS.PAGES.LOGOUT}
+                    </div>
+                    <div
+                        style={tabStyle}
+                        onClick={() => this._handleClick(CONSTANTS.PAGES.HOME)}
+                        >
+                        {CONSTANTS.PAGES.HOME}
+                    </div>
+                    <div
+                        style={tabStyle}
+                        onClick={() => this._handleClick(CONSTANTS.PAGES.INVENTORY)}
+                        >
+                        {CONSTANTS.PAGES.INVENTORY}
+                    </div>
+                    <div
+                        style={tabStyle}
+                        onClick={() => this._handleClick(CONSTANTS.PAGES.HISTORY)}
+                        >
+                        {CONSTANTS.PAGES.HISTORY}
+                    </div>
                 </div>
-                <div
-                    style={tabStyle}
-                    onClick={() => this._handleClick(CONSTANTS.PAGES.HOME)}
-                    >
-                    {CONSTANTS.PAGES.HOME}
+            )
+        } else {
+            return (
+                 <div>
+                    <div
+                        style={tabStyle}
+                        onClick={() => this._handleClick(CONSTANTS.PAGES.LOGIN)}
+                        >
+                        {CONSTANTS.PAGES.LOGIN}
+                    </div> 
                 </div>
-                <div
-                    style={tabStyle}
-                    onClick={() => this._handleClick(CONSTANTS.PAGES.INVENTORY)}
-                    >
-                    {CONSTANTS.PAGES.INVENTORY}
-                </div>
-                <div
-                    style={tabStyle}
-                    onClick={() => this._handleClick(CONSTANTS.PAGES.HISTORY)}
-                    >
-                    {CONSTANTS.PAGES.HISTORY}
-                </div>
-            </div>
-        );
+            )
+        }
+            
     }
 }
 

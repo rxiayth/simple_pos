@@ -3,6 +3,7 @@ import DATABASE from './Database.js';
 import CONSTANTS from './Constants.js';
 
 import Login from './Main/Login.js';
+import Logout from './Main/Logout.js';
 import Home from './Main/Home.js';
 import Inventory from './Main/Inventory.js';
 import History from './Main/History.js';
@@ -19,7 +20,10 @@ class App extends Component {
 		this.state = {
 
 			currentPage: CONSTANTS.PAGES.LOGIN,	// 1 default = main, 2 = settings
-			pageComponents: { }
+			pageComponents: { },
+			isLoggedIn: true,
+			errorMessage: ''
+
 			// menu: {}, 				// { sku: {name, price, sku} }
 			// inventory: {}, 			// { sku : quantity }
 			// cart: {}, 				// { sku : {name, price, quantity, isMaxedOut} }
@@ -27,6 +31,7 @@ class App extends Component {
 
 		}
 		this.updateCurrentPage = this.updateCurrentPage.bind(this);
+		this.login = this.login.bind(this);
 
 		// this.updateCart = this.updateCart.bind(this);
 		// updatein, update curp.
@@ -39,6 +44,7 @@ class App extends Component {
 	componentWillMount() {
 		let pageComponents = {};
 	 	pageComponents[CONSTANTS.PAGES.LOGIN] = Login;
+	 	pageComponents[CONSTANTS.PAGES.LOGOUT] = Logout;
 		pageComponents[CONSTANTS.PAGES.HOME] = Home;
 		pageComponents[CONSTANTS.PAGES.INVENTORY] = Inventory;
 		pageComponents[CONSTANTS.PAGES.HISTORY] = History;
@@ -78,6 +84,18 @@ class App extends Component {
 	updateCurrentPage(pageName) {
 		this.setState({currentPage: pageName});
 	}
+	login(name,password) {
+		let authenticationResult = authenticate(name,password);
+		if (authenticate) {
+			this.setState({ 
+				isLoggedIn: true, 
+				curretPage: CONSTANTS.PAGES.HOME
+			});
+		} else {
+			this.setState({ errorMessage: "There is a mismatch between the username and password" })
+		}
+
+	}
 
     render() {
 		// decide which main page to load
@@ -88,6 +106,7 @@ class App extends Component {
         	<div>
         		<div className="toolbar">
 	        		<Topbar 
+	        			isLoggedIn={this.state.isLoggedIn}
 	        			currentPage={this.state.currentPage}
 	        			updateCurrentPage={this.updateCurrentPage} 
 	        		/>
@@ -95,7 +114,7 @@ class App extends Component {
 	        	<div className="sidebar">
 	        	</div>
         		<div className="main">
-        			<CurrentPage />
+        			<CurrentPage errorMessage={this.state.errorMessage}/>
         		</div>
 
   

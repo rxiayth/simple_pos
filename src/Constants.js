@@ -7,6 +7,7 @@ const CONSTANTS = {
     },
     PAGES : {
         LOGIN : 'LOGIN',
+        LOGOUT : 'LOGOUT',
         SETTINGS : 'SETTINGS',
         HOME : 'HOME',
         INVENTORY : 'INVENTORY',
