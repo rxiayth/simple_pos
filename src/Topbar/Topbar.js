@@ -6,10 +6,10 @@ class Topbar extends Component {
     constructor(props) {
         super(props);
 
-        this._handleClick.bind(this);
+        this.handleOnClick.bind(this);
     }
 
-    _handleClick(pageName) {
+    handleOnClick(pageName) {
         this.props.updateCurrentPage(pageName);
     }
 
@@ -22,30 +22,30 @@ class Topbar extends Component {
             backgroundColor: 'gray'
         };
 
-        if (this.props.isLoggedIn){
+        if (this.props.isLoggedIn) {
             return (
                 <div>
                     <div
                         style={tabStyle}
-                        onClick={() => this._handleClick(CONSTANTS.PAGES.LOGOUT)}
+                        onClick={() => this.handleOnClick(CONSTANTS.PAGES.LOGOUT)}
                         >
                         {CONSTANTS.PAGES.LOGOUT}
                     </div>
                     <div
                         style={tabStyle}
-                        onClick={() => this._handleClick(CONSTANTS.PAGES.HOME)}
+                        onClick={() => this.handleOnClick(CONSTANTS.PAGES.HOME)}
                         >
                         {CONSTANTS.PAGES.HOME}
                     </div>
                     <div
                         style={tabStyle}
-                        onClick={() => this._handleClick(CONSTANTS.PAGES.INVENTORY)}
+                        onClick={() => this.handleOnClick(CONSTANTS.PAGES.INVENTORY)}
                         >
                         {CONSTANTS.PAGES.INVENTORY}
                     </div>
                     <div
                         style={tabStyle}
-                        onClick={() => this._handleClick(CONSTANTS.PAGES.HISTORY)}
+                        onClick={() => this.handleOnClick(CONSTANTS.PAGES.HISTORY)}
                         >
                         {CONSTANTS.PAGES.HISTORY}
                     </div>
@@ -59,11 +59,11 @@ class Topbar extends Component {
                         onClick={() => this._handleClick(CONSTANTS.PAGES.LOGIN)}
                         >
                         {CONSTANTS.PAGES.LOGIN}
-                    </div> 
+                    </div>
                 </div>
             )
         }
-            
+
     }
 }
 
