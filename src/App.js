@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DATABASE from './Database.js';
+import DB from './Database/Database.js';
 import CONSTANTS from './Constants.js';
 
 import Login from './Main/Login.js';
@@ -21,8 +22,8 @@ class App extends Component {
 
 			currentPage: CONSTANTS.PAGES.LOGIN,	// 1 default = main, 2 = settings
 			pageComponents: { },
-			isLoggedIn: true,
-			errorMessage: ''
+			isLoggedIn: false,
+			errorMessage: '',
 
 			// menu: {}, 				// { sku: {name, price, sku} }
 			// inventory: {}, 			// { sku : quantity }
@@ -49,8 +50,9 @@ class App extends Component {
 		pageComponents[CONSTANTS.PAGES.INVENTORY] = Inventory;
 		pageComponents[CONSTANTS.PAGES.HISTORY] = History;
 	
-		console.log(pageComponents);
+		// console.log(pageComponents);
 		this.setState({pageComponents})
+
 	}
 
 	/*	initializes state 'menu' with DrinkList from Database.js
@@ -85,8 +87,9 @@ class App extends Component {
 		this.setState({currentPage: pageName});
 	}
 	login(name,password) {
-		let authenticationResult = authenticate(name,password);
-		if (authenticate) {
+		let DBInstance =  DB.getInstance();
+		let authenticationResult = DBInstance.authenticate(name,password);
+		if (authenticationResult) {
 			this.setState({ 
 				isLoggedIn: true, 
 				curretPage: CONSTANTS.PAGES.HOME
@@ -100,7 +103,7 @@ class App extends Component {
     render() {
 		// decide which main page to load
 		const CurrentPage = this.state.pageComponents[this.state.currentPage];
-		console.log( CurrentPage)
+		// console.log( CurrentPage)
 		
         return (
         	<div>
@@ -114,7 +117,10 @@ class App extends Component {
 	        	<div className="sidebar">
 	        	</div>
         		<div className="main">
-        			<CurrentPage errorMessage={this.state.errorMessage}/>
+        			<CurrentPage 
+        				errorMessage={this.state.errorMessage}
+        				login={this.login}
+        			/>
         		</div>
 
   

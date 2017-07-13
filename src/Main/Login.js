@@ -11,9 +11,9 @@ class Login extends Component {
     handleOnClick() {
         let name = this.refs.name.value;
         let password = this.refs.password.value;
-        console.log("LOGIN.JS - handleOnClick \n" +
-                    "\tname = " + name + "\n" +
-                    "\tpassword = " + password);
+        // console.log("LOGIN.JS - handleOnClick \n" +
+        //             "\tname = " + name + "\n" +
+        //             "\tpassword = " + password);
         this.props.login(name, password);
     }
 
@@ -38,9 +38,9 @@ class Login extends Component {
             return [
                 <input type="text" ref="name" />,
                 <input type="password" ref="password" />,
-                <div onClick={() => this.handleOnClick()}>
+                <button onClick={() => this.handleOnClick()}>
                     LOGIN
-                </div>
+                </button>
             ]
         }
     }
