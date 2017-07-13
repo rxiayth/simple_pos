@@ -33,15 +33,17 @@ class Login extends Component {
         if (isLoggedIn) {
             return (
                 <div> USER ALREADY LOGGED IN </div>
-            )
+            );
         } else {
-            return [
-                <input type="text" ref="name" />,
-                <input type="password" ref="password" />,
-                <button onClick={() => this.handleOnClick()}>
-                    LOGIN
-                </button>
-            ]
+            return (
+                <div>
+                    <input type="text" ref="name" />
+                    <input type="password" ref="password" />
+                    <button onClick={() => this.handleOnClick()}>
+                        LOGIN
+                    </button>
+                </div>
+            );
         }
     }
     errorMessage() {
