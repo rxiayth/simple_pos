@@ -2,12 +2,50 @@ import React, { Component } from 'react';
 
 class Login extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.handleOnClick.bind(this);
+    }
+
+    handleOnClick() {
+        let name = this.refs.name.value;
+        let password = this.refs.password.value;
+        console.log("LOGIN.JS - handleOnClick \n" +
+                    "\tname = " + name + "\n" +
+                    "\tpassword = " + password);
+        this.props.login(name, password);
+    }
+
     render() {
+        let isLoggedIn = this.props.isLoggedIn;
+
         return (
             <div>
-                Login
+                {this.isLoggedIn()}
+                {this.errorMessage()}
             </div>
         );
+    }
+
+    isLoggedIn() {
+        let isLoggedIn = this.props.isLoggedIn;
+        if (isLoggedIn) {
+            return (
+                <div> USER ALREADY LOGGED IN </div>
+            )
+        } else {
+            return [
+                <input type="text" ref="name" />,
+                <input type="password" ref="password" />,
+                <div onClick={() => this.handleOnClick()}>
+                    LOGIN
+                </div>
+            ]
+        }
+    }
+    errorMessage() {
+        return this.props.errorMessage;
     }
 }
 
