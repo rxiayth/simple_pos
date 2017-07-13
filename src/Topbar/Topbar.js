@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+
 import CONSTANTS from '../Constants.js';
+import
 
 class Topbar extends Component {
 
     constructor(props) {
         super(props);
-
-        this.handleOnClick.bind(this);
     }
 
     handleOnClick(pageName) {
