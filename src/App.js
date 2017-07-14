@@ -40,7 +40,16 @@ class App extends Component {
 	}
 
 	updateCurrentPage(pageName) {
-		this.setState({currentPage: pageName});
+		switch(pageName) {
+			case (CONSTANTS.PAGES.LOGOUT) : {
+				this.setState({isLoggedIn : false});
+				this.setState({currentPage : CONSTANTS.PAGES.LOGIN});
+				break;
+			}
+			default: {
+				this.setState({currentPage: pageName});
+			}
+		};
 	}
 
 	login(name,password) {
