@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 
+import Button from '../Common/Button.js';
+
 class Login extends Component {
 
     constructor(props) {
         super(props);
 
-        this.handleOnClick.bind(this);
+        this.handleLogin.bind(this);
     }
 
-    handleOnClick() {
+    handleLogin() {
         let name = this.refs.name.value;
         let password = this.refs.password.value;
         // console.log("LOGIN.JS - handleOnClick \n" +
@@ -20,32 +22,39 @@ class Login extends Component {
     render() {
         return (
             <div>
-                {this.isLoggedIn()}
-                {this.errorMessage()}
+                {this._renderLoginForm()}
+                {this._renderErrorMessage()}
             </div>
         );
     }
 
-    isLoggedIn() {
-        let isLoggedIn = this.props.isLoggedIn;
-        if (isLoggedIn) {
-            return (
-                <div> USER ALREADY LOGGED IN </div>
-            );
-        } else {
-            return (
-                <div>
-                    <input type="text" ref="name" />
-                    <input type="password" ref="password" />
-                    <button onClick={() => this.handleOnClick()}>
-                        LOGIN
-                    </button>
-                </div>
-            );
-        }
+    _renderLoginForm() {
+        let loginStyle = {
+            width: 100,
+            height: 25,
+            backgroundColor: 'white',
+            textAlign: 'center'
+        };
+
+        return (
+            <div>
+                <input type="text" ref="name" />
+                <input type="password" ref="password" />
+                <Button
+                    name={'LOGIN'}
+                    style={loginStyle}
+                    func={() => this.handleLogin()}
+                    />
+            </div>
+        );
     }
-    errorMessage() {
-        return this.props.errorMessage;
+
+    _renderErrorMessage() {
+        return (
+            <div>
+                {this.props.errorMessage}
+            </div>
+        );
     }
 }
 
