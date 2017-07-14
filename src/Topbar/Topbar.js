@@ -31,10 +31,6 @@ class Topbar extends Component {
         this.setState({style});
     }
 
-    handleOnClick(pageName) {
-        this.props.updateCurrentPage(pageName);
-    }
-
     render() {
         if (this.props.isLoggedIn) {
             return this._renderLoggedIn();
@@ -49,22 +45,25 @@ class Topbar extends Component {
                 <Button
                     name={CONSTANTS.PAGES.LOGOUT}
                     style={this.state.style.unhighlightedTab}
-                    func={() => this.handleOnClick(CONSTANTS.PAGES.LOGOUT)}
+                    func={() => this.props.logout()}
                 />
                 <Button
                     name={CONSTANTS.PAGES.HOME}
                     style={this.state.style.unhighlightedTab}
-                    func={() => this.handleOnClick(CONSTANTS.PAGES.HOME)}
+                    func={() =>
+                        this.props.updateCurrentPage(CONSTANTS.PAGES.HOME)}
                 />
                 <Button
                     name={CONSTANTS.PAGES.INVENTORY}
                     style={this.state.style.unhighlightedTab}
-                    func={() => this.handleOnClick(CONSTANTS.PAGES.INVENTORY)}
+                    func={() =>
+                        this.props.updateCurrentPage(CONSTANTS.PAGES.INVENTORY)}
                 />
                 <Button
                     name={CONSTANTS.PAGES.HISTORY}
                     style={this.state.style.unhighlightedTab}
-                    func={() => this.handleOnClick(CONSTANTS.PAGES.HISTORY)}
+                    func={() =>
+                        this.props.updateCurrentPage(CONSTANTS.PAGES.HISTORY)}
                 />
             </div>
         );

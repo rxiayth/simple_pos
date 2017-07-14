@@ -26,6 +26,7 @@ class App extends Component {
 		}
 		this.updateCurrentPage = this.updateCurrentPage.bind(this);
 		this.login = this.login.bind(this);
+		this.logout = this.logout.bind(this);
 	}
 
 	componentWillMount() {
@@ -40,16 +41,7 @@ class App extends Component {
 	}
 
 	updateCurrentPage(pageName) {
-		switch(pageName) {
-			case (CONSTANTS.PAGES.LOGOUT) : {
-				this.setState({isLoggedIn : false});
-				this.setState({currentPage : CONSTANTS.PAGES.LOGIN});
-				break;
-			}
-			default: {
-				this.setState({currentPage: pageName});
-			}
-		};
+		this.setState({currentPage: pageName});
 	}
 
 	login(name,password) {
@@ -67,6 +59,11 @@ class App extends Component {
 		}
 	}
 
+	logout() {
+		this.setState({isLoggedIn : false});
+		this.setState({currentPage : CONSTANTS.PAGES.LOGIN});
+	}
+
     render() {
 		const CurrentPage = this.state.pageComponents[this.state.currentPage];
 
@@ -77,6 +74,7 @@ class App extends Component {
 	        			isLoggedIn={this.state.isLoggedIn}
 	        			currentPage={this.state.currentPage}
 	        			updateCurrentPage={this.updateCurrentPage}
+						logout={this.logout}
 	        		/>
 	        	</div>
 	        	<div className="sidebar">
