@@ -18,8 +18,6 @@ class Login extends Component {
     }
 
     render() {
-        let isLoggedIn = this.props.isLoggedIn;
-
         return (
             <div>
                 {this.isLoggedIn()}
