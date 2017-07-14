@@ -50,7 +50,8 @@ class App extends Component {
 		if (successfulAuthentication) {
 			this.setState({
 				isLoggedIn: true,
-				currentPage: CONSTANTS.PAGES.HOME
+				currentPage: CONSTANTS.PAGES.HOME,
+				errorMessage: ''
 			});
 		} else {
 			this.setState({
