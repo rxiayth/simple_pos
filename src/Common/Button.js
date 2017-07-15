@@ -11,7 +11,7 @@ class Button extends Component {
             </div>
         );
     }// render
-}
+}// Button
 
 Button.propTypes = {
     style : PropTypes.shape({
