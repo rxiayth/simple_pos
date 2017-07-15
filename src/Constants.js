@@ -12,6 +12,10 @@ const CONSTANTS = {
         HOME : 'HOME',
         INVENTORY : 'INVENTORY',
         HISTORY : 'HISTORY'
+    },
+    DATABASE : {
+        SKU : 'SKU',
+        NAME : 'NAME'
     }
 };
 
