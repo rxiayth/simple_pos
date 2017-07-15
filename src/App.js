@@ -18,9 +18,9 @@ class App extends Component {
 		super(props);
 		this.state = {
 
-			currentPage: CONSTANTS.PAGES.LOGIN,	// 1 default = main, 2 = settings
+			currentPage: CONSTANTS.PAGES.HOME,	// 1 default = main, 2 = settings
 			pageComponents: {},
-			isLoggedIn: false,
+			isLoggedIn: true,
 			errorMessage: '',
 
 		}
@@ -77,8 +77,6 @@ class App extends Component {
 	        			updateCurrentPage={this.updateCurrentPage}
 						logout={this.logout}
 	        		/>
-	        	</div>
-	        	<div className="sidebar">
 	        	</div>
         		<div className="main">
         			<CurrentPage

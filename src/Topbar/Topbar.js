@@ -23,7 +23,7 @@ class Topbar extends Component {
             height : '80%',
             float : 'left',
             textAlign : 'center',
-            backgroundColor: 'white'
+            backgroundColor: 'gray'
         };
 
         style['unhighlightedTab'] = unhighlightedTab;
