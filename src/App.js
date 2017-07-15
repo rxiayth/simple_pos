@@ -18,9 +18,9 @@ class App extends Component {
 		super(props);
 		this.state = {
 
-			currentPage: CONSTANTS.PAGES.HOME,	// 1 default = main, 2 = settings
+			currentPage: CONSTANTS.PAGES.LOGIN,
 			pageComponents: {},
-			isLoggedIn: true,
+			isLoggedIn: false,
 			errorMessage: '',
 
 		}
