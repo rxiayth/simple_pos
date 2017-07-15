@@ -48,6 +48,10 @@ class App extends Component {
 		this.state.database.queryProducts(searchType, searchPhrase);
 	}// searchProducts
 
+	updateInventory(sku, volume) {
+		this.state.database.updateInventory(sku, volume);
+	}// updateInventory
+
 	login(name,password) {
 		let database =  Database.getInstance();
 		let successfulAuthentication = database.authenticate(name,password);
@@ -112,7 +116,8 @@ class App extends Component {
 			case (CONSTANTS.PAGES.HOME) : {
 				props = {
 					searchProducts : this.searchProducts,
-					inventory : this.state.database.inventory
+					inventory : this.state.database.inventory,
+					updateInventory : this.updateInventory
 				};
 				break;
 			}

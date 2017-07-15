@@ -11,7 +11,8 @@ class Home extends Component {
         super(props);
 
         this.state = {
-            currentPage : CONSTANTS.PAGES.PRODUCTSEARCH
+            currentPage : CONSTANTS.PAGES.PRODUCTSEARCH,
+            cart : {}
         }
 
         this.updateCurrentPage = this.updateCurrentPage.bind(this);
@@ -21,6 +22,16 @@ class Home extends Component {
         this.setState({currentPage : pageName});
     }// updateCurrentPage
 
+    updateCart(sku, volume) {
+        this.setState({cart : this.state.cart + volume});
+    }// updateCart
+
+    checkout() {
+        for (let item in this.state.cart) {
+            if (!this.state.cart.hasOwnProperty(item)) continue;
+            this.props.updateInventory(item, this.state.cart[item]);
+        }
+    }// checkout
 
     render() {
         return (
@@ -36,11 +47,15 @@ class Home extends Component {
             case (CONSTANTS.PAGES.PRODUCTSEARCH) : {
                 result = (
                     <div>
-                        <ProductSearch />
+                        <ProductSearch
+                            searchProducts={this.props.searchProducts}
+                            updateCart={this.updateCart}
+                        />
                         <Cart
                             goToCheckOut={() =>
                                 this.updateCurrentPage(CONSTANTS.PAGES.CHECKOUT)
                             }
+                            updateCart={this.updateCart}
                         />
                     </div>
                 );
@@ -49,7 +64,12 @@ class Home extends Component {
             case (CONSTANTS.PAGES.CHECKOUT) : {
                 result = (
                     <div>
-                        <Checkout />
+                        <Checkout
+                            goBack={() =>
+                                this.updateCurrentPage(CONSTANTS.PAGES.PRODUCTSEARCH)
+                            }
+                            checkout={this.checkout}
+                        />
                     </div>
                 );
                 break;
