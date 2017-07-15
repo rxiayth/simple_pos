@@ -45,7 +45,7 @@ class Home extends Component {
                     </div>
                 );
                 break;
-            };
+            }
             case (CONSTANTS.PAGES.CHECKOUT) : {
                 result = (
                     <div>
@@ -53,6 +53,8 @@ class Home extends Component {
                     </div>
                 );
                 break;
+            }
+            default : {
             }
         }// switch
         return result;

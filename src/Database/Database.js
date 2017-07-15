@@ -6,16 +6,16 @@ let instance = null;
 class Database {
 
     static getInstance() {
-        if (!Database.instance) {
-            Database.instance = new Database();
+        if (!instance) {
+            instance = new Database();
         }
-        return Database.instance;
-    }
+        return instance;
+    }// getInstance
 
     constructor() {
         // used for hardcoded results in queryProducts
         this._loadInventory();
-    }
+    }// constuctor
 
     _loadInventory() {
         // used for hardcoded results in queryProducts
@@ -26,8 +26,14 @@ class Database {
             drinks[drink.sku] = drink;
         };
         this.drinks = drinks;
-        this.inventory = DATABASE.INVENTORY.inventory;
-    }
+
+        let inventory = {};
+        for (let i = 0; i < DATABASE.INVENTORY.length; i++) {
+            let item = DATABASE.INVENTORY[i];
+            inventory[item.sku] = item.quantity;
+        }
+        this.inventory = inventory;
+    }// _loadInventory
 
     authenticate(name, password) {
         // query database for name and password match.
@@ -48,11 +54,13 @@ class Database {
             case (CONSTANTS.DATABASE.NAME) : {
                 result = this._queryProductsByName(searchPhrase);
                 break;
-            };
+            }
             case (CONSTANTS.DATABASE.SKU) : {
                 result = this._queryProductsBySku(searchPhrase);
                 break;
-            };
+            }
+            default : {
+            }
         }// switch
         return result;
     }// queryProducts
@@ -81,6 +89,10 @@ class Database {
         };
         return result;
     }// _queryProductsBySku
+
+    updateInventory(sku, volume) {
+        this.inventory[sku] = this.inventor[sku] - volume;
+    }// updateInventory
 
 }// Database
 
