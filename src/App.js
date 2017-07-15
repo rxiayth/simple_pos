@@ -22,12 +22,13 @@ class App extends Component {
 			pageComponents: {},
 			isLoggedIn: false,
 			errorMessage: '',
-
+			database : Database.getInstance()
 		}
 		this.updateCurrentPage = this.updateCurrentPage.bind(this);
+		this.searchProducts = this.searchProducts.bind(this);
 		this.login = this.login.bind(this);
 		this.logout = this.logout.bind(this);
-	}
+	}// constructor
 
 	componentWillMount() {
 		let pageComponents = {};
@@ -37,12 +38,15 @@ class App extends Component {
 		pageComponents[CONSTANTS.PAGES.HISTORY] = History;
 
 		this.setState({pageComponents})
-
-	}
+	}// componentWillMount
 
 	updateCurrentPage(pageName) {
 		this.setState({currentPage: pageName});
-	}
+	}// updateCurrentPage
+
+	searchProducts(searchType, searchPhrase) {
+		this.state.database.queryProducts(searchType, searchPhrase);
+	}// searchProducts
 
 	login(name,password) {
 		let database =  Database.getInstance();
@@ -58,12 +62,12 @@ class App extends Component {
 				errorMessage: 'There is a mismatch between the username and password'
 			});
 		}
-	}
+	}// login
 
 	logout() {
 		this.setState({isLoggedIn : false});
 		this.setState({currentPage : CONSTANTS.PAGES.LOGIN});
-	}
+	}// logout
 
     render() {
 		const CurrentPage = this.state.pageComponents[this.state.currentPage];
@@ -86,6 +90,7 @@ class App extends Component {
         		</div>
     		</div>
         );
-    }
-}
+    }// render
+}// App
+
 export default App;
