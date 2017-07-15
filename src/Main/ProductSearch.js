@@ -8,19 +8,19 @@ class ProductSearch extends Component {
         this.state = {
         	queryType: "name"
         }
-    }
+    }// constructor
 
 
     handleSearchType(queryType) {
     	this.setState({queryType});
     	console.log(queryType);
     	this.handleSearch(queryType);
-    }
-   	
+    }// handleSearchType
+
    	handleSearch(queryType=this.state.queryType) {
    		let query = this.refs.query.value;
         console.log("Search", query, queryType);
-    }
+    }// handleSearch
 
 
 
@@ -32,26 +32,26 @@ class ProductSearch extends Component {
             textAlign: 'center'
         };
 
-        
+
 
         return (
             <div style={productSearchStyle}>
 
-            	<input type="radio" name="queryType" value="name" defaultChecked="true" 
-            		onClick={ ()=> this.handleSearchType("name")} /> Name 
-            	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            
-			  	<input type="radio" name="queryType" value="sku" 
-			  		onClick={ ()=> this.handleSearchType("sku")} />SKU 
+            	<input type="radio" name="queryType" value="name" defaultChecked="true"
+            		onClick={ ()=> this.handleSearchType("name")} /> Name
+            	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			  	<input type="radio" name="queryType" value="sku"
+			  		onClick={ ()=> this.handleSearchType("sku")} />SKU
 			  	<br /><br />
-					
 
-            	<input id="query" type="text" ref="query" 
+
+            	<input id="query" type="text" ref="query"
             		onChange={ ()=> this.handleSearch()} />
-            
+
                 ProductSearch
             </div>
         );
-    }
-}
+    }// render
+}// ProductSearch
 
 export default ProductSearch;

@@ -11,9 +11,9 @@ class Cart extends Component {
 		return (
 			<div style={cartStyle}>
 				Cart
-			</div> 
+			</div>
 		);
-	}
-}
+	}// render
+}// Cart
 
 export default Cart;

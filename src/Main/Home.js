@@ -15,7 +15,7 @@ class Home extends Component {
         }
 
         this.updateCurrentPage = this.updateCurrentPage.bind(this);
-    }
+    }// constructor
 
     updateCurrentPage(pageName) {
         this.setState({currentPage : pageName});

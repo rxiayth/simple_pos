@@ -25,8 +25,8 @@ Button.propTypes = {
         ]).isRequired,
         backgroundColor : PropTypes.string
     }),
-    func : React.PropTypes.func.isRequired,
-    name : React.PropTypes.string.isRequired
+    func : PropTypes.func.isRequired,
+    name : PropTypes.string.isRequired
 }// propTypes
 
 export default Button;

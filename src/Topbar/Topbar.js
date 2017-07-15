@@ -9,11 +9,11 @@ class Topbar extends Component {
         super(props);
 
         this.state = {}
-    }
+    }// constructor
 
     componentWillMount() {
         this._loadStyle();
-    }
+    }// componentWillMount
 
     _loadStyle() {
         let style = {};
@@ -29,7 +29,7 @@ class Topbar extends Component {
         style['unhighlightedTab'] = unhighlightedTab;
 
         this.setState({style});
-    }
+    }// _loadStyle
 
     render() {
         if (this.props.isLoggedIn) {
@@ -81,6 +81,6 @@ class Topbar extends Component {
         );
     }// _renderLoggedOut
 
-}// class
+}// Topbar
 
 export default Topbar;
