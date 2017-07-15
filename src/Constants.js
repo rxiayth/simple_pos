@@ -11,7 +11,9 @@ const CONSTANTS = {
         SETTINGS : 'SETTINGS',
         HOME : 'HOME',
         INVENTORY : 'INVENTORY',
-        HISTORY : 'HISTORY'
+        HISTORY : 'HISTORY',
+        CHECKOUT : 'CHECKOUT',
+        "PRODUCTSEARCH": 'PRODUCTSEARCH'
     }
 };
 
