@@ -70,27 +70,67 @@ class App extends Component {
 	}// logout
 
     render() {
-		const CurrentPage = this.state.pageComponents[this.state.currentPage];
-
         return (
         	<div>
-        		<div className="topbar">
-	        		<Topbar
-	        			isLoggedIn={this.state.isLoggedIn}
-	        			currentPage={this.state.currentPage}
-	        			updateCurrentPage={this.updateCurrentPage}
-						logout={this.logout}
-	        		/>
-	        	</div>
-        		<div className="main">
-        			<CurrentPage
-        				errorMessage={this.state.errorMessage}
-        				login={this.login}
-        			/>
-        		</div>
+        		{this._renderTopbar()}
+        		{this._renderMain()}
+				{this._renderSidebar()}
     		</div>
         );
     }// render
+
+	_renderTopbar() {
+		return (
+			<div className="topbar">
+				<Topbar
+					isLoggedIn={this.state.isLoggedIn}
+					currentPage={this.state.currentpage}
+					updateCurrentPage={this.updateCurrentPage}
+					logout={this.logout}
+					/>
+			</div>
+		);
+	}// _renderTopbar
+
+	_renderSidebar() {
+		return (
+			<div className="sidebar">
+			</div>
+		);
+	}// _renderSidebar
+
+	_renderMain() {
+		let props = {};
+		switch (this.state.currentPage) {
+			case (CONSTANTS.PAGES.LOGIN) : {
+				props = {
+					login : this.login,
+					errorMessage : this.state.errorMessage
+				};
+				break;
+			}
+			case (CONSTANTS.PAGES.HOME) : {
+				props = {
+					searchProducts : this.searchProducts,
+					inventory : this.state.database.inventory
+				};
+				break;
+			}
+			default : {
+			}
+		}// switch
+
+		const CurrentPage = this.state.pageComponents[this.state.currentPage];
+		return (
+			<div className="main">
+				<CurrentPage
+					{...props}
+					/>
+			</div>
+		);
+	}// _renderMain
+
+
 }// App
 
 export default App;
