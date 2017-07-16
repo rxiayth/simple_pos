@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import ProductSearchResult from './ProductSearchResults'
+import ProductSearchResult from './ProductSearchResults';
+import CONSTANTS from '../Constants.js';
 
 class ProductSearch extends Component {
 	constructor(props) {
@@ -7,7 +8,7 @@ class ProductSearch extends Component {
         this.handleSearch.bind(this);
         this.handleSearchType.bind(this);
         this.state = {
-        	queryType: "name",
+        	queryType: CONSTANTS.DATABASE.NAME,
             cart: this.props.cart
         }
     }// constructor
@@ -15,28 +16,15 @@ class ProductSearch extends Component {
 
     handleSearchType(queryType) {
     	this.setState({queryType});
-    	console.log(queryType);
     	this.handleSearch(queryType);
     }// handleSearchType
 
    	handleSearch(queryType=this.state.queryType) {
    		let query = this.refs.query.value;
-        console.log("Search", query, queryType);
-        return [ {
-            name: 'Crown Royal',
-            price: '11',
-            sku: '00101'
-        },
-        {
-            name: 'Grant\'s',
-            price: '12',
-            sku: '00102'
-        },
-        {
-            name: 'J&B',
-            price: '13',
-            sku: '00103'
-        }]
+        let result = this.props.searchProducts(queryType, query);
+		// result.map( (item) => {
+		// 	this.props.updateCart(item.sku, 1);
+		// });
     }
 
     render() {
@@ -51,12 +39,15 @@ class ProductSearch extends Component {
 
         return (
             <div style={productSearchStyle}>
-
-            	<input type="radio" name="queryType" value="name" defaultChecked="true"
-            		onClick={ ()=> this.handleSearchType("name")} /> Name
+            	<input
+					type="radio"
+					name="queryType"
+					defaultChecked="true"
+            		onClick={ ()=> this.handleSearchType(CONSTANTS.DATABASE.NAME)}
+				/> Name
             	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			  	<input type="radio" name="queryType" value="sku"
-			  		onClick={ ()=> this.handleSearchType("sku")} />SKU
+			  	<input type="radio" name="queryType"
+			  		onClick={ ()=> this.handleSearchType(CONSTANTS.DATABASE.SKU)} />SKU
 			  	<br /><br />
 
 

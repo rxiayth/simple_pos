@@ -18,9 +18,9 @@ class App extends Component {
 		super(props);
 		this.state = {
 
-			currentPage: CONSTANTS.PAGES.HOME,
+			currentPage: CONSTANTS.PAGES.LOGIN,
 			pageComponents: {},
-			isLoggedIn: true,
+			isLoggedIn: false,
 			errorMessage: '',
 			database : Database.getInstance()
 		}
@@ -45,7 +45,7 @@ class App extends Component {
 	}// updateCurrentPage
 
 	searchProducts(searchType, searchPhrase) {
-		this.state.database.queryProducts(searchType, searchPhrase);
+		return this.state.database.queryProducts(searchType, searchPhrase);
 	}// searchProducts
 
 	updateInventory(sku, volume) {
@@ -115,6 +115,7 @@ class App extends Component {
 			}
 			case (CONSTANTS.PAGES.HOME) : {
 				props = {
+					drinks : this.state.database.drinks,
 					searchProducts : this.searchProducts,
 					inventory : this.state.database.inventory,
 					updateInventory : this.updateInventory

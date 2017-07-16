@@ -11,27 +11,11 @@ class Home extends Component {
 
         this.state = {
             currentPage : CONSTANTS.PAGES.PRODUCTSEARCH,
-            cart:  [{
-                name: 'Crown Royal',
-                price: '11',
-                sku: '00101',
-                quantity: '1'
-            },
-            {
-                name: 'Grant\'s',
-                price: '12',
-                sku: '00102',
-                quantity: '1'
-            },
-            {
-                name: 'J&B',
-                price: '13',
-                sku: '00103',
-                quantity: '1'
-            }]
+            cart : {}
         }
 
         this.updateCurrentPage = this.updateCurrentPage.bind(this);
+        this.updateCart = this.updateCart.bind(this);
     }// constructor
 
     updateCurrentPage(pageName) {
@@ -39,7 +23,15 @@ class Home extends Component {
     }// updateCurrentPage
 
     updateCart(sku, volume) {
-        this.setState({cart : this.state.cart + volume});
+        let item = this.props.drinks[sku];
+        if (!item.volume) item.volume = 0;
+        item.volume += volume;
+
+        let cart = this.state.cart;
+        cart[sku] = item;
+
+        this.setState({cart});
+        // odd case of volume = 0; not gonn ahave props
     }// updateCart
 
     checkout() {
@@ -66,7 +58,6 @@ class Home extends Component {
                         <ProductSearch
                             searchProducts={this.props.searchProducts}
                             updateCart={this.updateCart}
-                            cart={this.state.cart}
                         />
                         <Cart
                             goToCheckOut={() =>

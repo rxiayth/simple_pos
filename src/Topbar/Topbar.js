@@ -20,7 +20,7 @@ class Topbar extends Component {
         let style = {};
 
         let unhighlightedTab = {
-            minWidth : '25%',
+            width : '25%',
             height : '80%',
             float : 'left',
             textAlign : 'center',
