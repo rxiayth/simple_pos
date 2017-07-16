@@ -15,18 +15,24 @@ class Topbar extends Component {
         this._loadStyle();
     }
 
+
     _loadStyle() {
         let style = {};
 
         let unhighlightedTab = {
-            width : '15%',
+            minWidth : '25%',
             height : '80%',
             float : 'left',
             textAlign : 'center',
             backgroundColor: 'gray'
         };
 
+        let topBarStyle = {
+            textAlign: 'justify'
+        }
+
         style['unhighlightedTab'] = unhighlightedTab;
+        style['topBarStyle'] = topBarStyle;
 
         this.setState({style});
     }
@@ -41,7 +47,7 @@ class Topbar extends Component {
 
     _renderLoggedIn() {
         return (
-            <div>
+            <div style={this.state.style.topBarStyle}>
                 <Button
                     name={CONSTANTS.PAGES.LOGOUT}
                     style={this.state.style.unhighlightedTab}
@@ -71,7 +77,7 @@ class Topbar extends Component {
 
     _renderLoggedOut(tabStyle) {
         return (
-            <div>
+            <div style={this.state.style.topBarStyle}>
                 <Button
                     name={CONSTANTS.PAGES.LOGIN}
                     style={this.state.style.unhighlightedTab}

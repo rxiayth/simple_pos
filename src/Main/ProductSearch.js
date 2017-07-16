@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ProductSearchResult from './ProductSearchResults'
 
 class ProductSearch extends Component {
 	constructor(props) {
@@ -6,7 +7,8 @@ class ProductSearch extends Component {
         this.handleSearch.bind(this);
         this.handleSearchType.bind(this);
         this.state = {
-        	queryType: "name"
+        	queryType: "name",
+            cart: this.props.cart
         }
     }
 
@@ -19,10 +21,23 @@ class ProductSearch extends Component {
    	
    	handleSearch(queryType=this.state.queryType) {
    		let query = this.refs.query.value;
-        console.log("Search", query, queryType);
+        // console.log("Search", query, queryType);
+        return [ {
+            name: 'Crown Royal',
+            price: '11',
+            sku: '00101'
+        },
+        {
+            name: 'Grant\'s',
+            price: '12',
+            sku: '00102'
+        },
+        {
+            name: 'J&B',
+            price: '13',
+            sku: '00103'
+        }]
     }
-
-
 
     render() {
 	  	let productSearchStyle = {
@@ -47,8 +62,9 @@ class ProductSearch extends Component {
 
             	<input id="query" type="text" ref="query" 
             		onChange={ ()=> this.handleSearch()} />
-            
+                &nbsp;&nbsp;
                 ProductSearch
+                <ProductSearchResult cart={this.state.cart} />
             </div>
         );
     }
