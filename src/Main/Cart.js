@@ -11,10 +11,7 @@ class Cart extends Component {
             textAlign: 'center'
         };
 
-        let centerRowStyle = {
-        	marginLeft: 300,
-        	textAlign: 'left'
-        };
+ 
 
         let tableCellStyle = {
     	    textAlign : 'left',
@@ -38,7 +35,7 @@ class Cart extends Component {
 		return (
 			<div style={cartStyle}>
 				<h2>Cart Summary</h2>
-				<table style={centerRowStyle}>
+				<table>
 					<thead>
 						<tr>
 							<td style={tableCellStyle}>Name</td>
@@ -82,7 +79,7 @@ class Cart extends Component {
 				</table>
 				<br/>
 				<hr/>
-				<div style={centerRowStyle}>
+				<div>
 					Total: ${total}
 				</div>
 			</div>

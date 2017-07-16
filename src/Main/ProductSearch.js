@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ProductSearchResult from './ProductSearchResults';
+import ProductSearchResults from './ProductSearchResults';
 import CONSTANTS from '../Constants.js';
 
 class ProductSearch extends Component {
@@ -9,7 +9,8 @@ class ProductSearch extends Component {
         this.handleSearchType.bind(this);
         this.state = {
         	queryType: CONSTANTS.DATABASE.NAME,
-            cart: this.props.cart
+            cart: this.props.cart,
+            searchResult: {}
         }
     }// constructor
 
@@ -21,19 +22,24 @@ class ProductSearch extends Component {
 
    	handleSearch(queryType=this.state.queryType) {
    		let query = this.refs.query.value;
-        let result = this.props.searchProducts(queryType, query);
+        let searchResult = this.props.searchProducts(queryType, query);
+        this.setState({searchResult});
 		// result.map( (item) => {
 		// 	this.props.updateCart(item.sku, 1);
 		// });
-    }
+    }// handleSearch
 
     render() {
 	  	let productSearchStyle = {
             width: 'inherit',
-            height: 300,
+            height: 200,
             backgroundColor: 'lightblue',
             textAlign: 'center'
         };
+
+        let searchInputStyle = {
+            width: 400
+        }
 
 
 
@@ -46,16 +52,21 @@ class ProductSearch extends Component {
             		onClick={ ()=> this.handleSearchType(CONSTANTS.DATABASE.NAME)}
 				/> Name
             	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			  	<input type="radio" name="queryType"
+			  	<input 
+                    type="radio" 
+                    name="queryType"
 			  		onClick={ ()=> this.handleSearchType(CONSTANTS.DATABASE.SKU)} />SKU
 			  	<br /><br />
 
-
-            	<input id="query" type="text" ref="query"
+            	<input 
+                    id="query" 
+                    style={searchInputStyle}
+                    type="text" 
+                    ref="query"
+                    placeholder="Product Search"
             		onChange={ ()=> this.handleSearch()} />
                 &nbsp;&nbsp;
-                ProductSearch
-                <ProductSearchResult cart={this.state.cart} />
+                <ProductSearchResults searchResult={this.state.searchResult} />
             </div>
         );
     }// render

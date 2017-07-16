@@ -18,9 +18,9 @@ class App extends Component {
 		super(props);
 		this.state = {
 
-			currentPage: CONSTANTS.PAGES.LOGIN,
+			currentPage: CONSTANTS.PAGES.HOME,
 			pageComponents: {},
-			isLoggedIn: false,
+			isLoggedIn: true,
 			errorMessage: '',
 			database : Database.getInstance()
 		}
