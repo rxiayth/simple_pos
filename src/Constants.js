@@ -13,7 +13,11 @@ const CONSTANTS = {
         INVENTORY : 'INVENTORY',
         HISTORY : 'HISTORY',
         CHECKOUT : 'CHECKOUT',
-        "PRODUCTSEARCH": 'PRODUCTSEARCH'
+        PRODUCTSEARCH: 'PRODUCTSEARCH'
+    },
+    DATABASE : {
+        SKU : 'SKU',
+        NAME : 'NAME'
     }
 };
 

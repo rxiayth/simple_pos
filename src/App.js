@@ -18,16 +18,17 @@ class App extends Component {
 		super(props);
 		this.state = {
 
-			currentPage: CONSTANTS.PAGES.HOME,	// 1 default = main, 2 = settings
+			currentPage: CONSTANTS.PAGES.HOME,
 			pageComponents: {},
 			isLoggedIn: true,
 			errorMessage: '',
-
+			database : Database.getInstance()
 		}
 		this.updateCurrentPage = this.updateCurrentPage.bind(this);
+		this.searchProducts = this.searchProducts.bind(this);
 		this.login = this.login.bind(this);
 		this.logout = this.logout.bind(this);
-	}
+	}// constructor
 
 	componentWillMount() {
 		let pageComponents = {};
@@ -37,12 +38,19 @@ class App extends Component {
 		pageComponents[CONSTANTS.PAGES.HISTORY] = History;
 
 		this.setState({pageComponents})
-
-	}
+	}// componentWillMount
 
 	updateCurrentPage(pageName) {
 		this.setState({currentPage: pageName});
-	}
+	}// updateCurrentPage
+
+	searchProducts(searchType, searchPhrase) {
+		this.state.database.queryProducts(searchType, searchPhrase);
+	}// searchProducts
+
+	updateInventory(sku, volume) {
+		this.state.database.updateInventory(sku, volume);
+	}// updateInventory
 
 	login(name,password) {
 		let database =  Database.getInstance();
@@ -58,34 +66,76 @@ class App extends Component {
 				errorMessage: 'There is a mismatch between the username and password'
 			});
 		}
-	}
+	}// login
 
 	logout() {
 		this.setState({isLoggedIn : false});
 		this.setState({currentPage : CONSTANTS.PAGES.LOGIN});
-	}
+	}// logout
 
     render() {
-		const CurrentPage = this.state.pageComponents[this.state.currentPage];
-
         return (
         	<div>
-        		<div className="topbar">
-	        		<Topbar
-	        			isLoggedIn={this.state.isLoggedIn}
-	        			currentPage={this.state.currentPage}
-	        			updateCurrentPage={this.updateCurrentPage}
-						logout={this.logout}
-	        		/>
-	        	</div>
-        		<div className="main">
-        			<CurrentPage
-        				errorMessage={this.state.errorMessage}
-        				login={this.login}
-        			/>
-        		</div>
+        		{this._renderTopbar()}
+        		{this._renderMain()}
+				{this._renderSidebar()}
     		</div>
         );
-    }
-}
+    }// render
+
+	_renderTopbar() {
+		return (
+			<div className="topbar">
+				<Topbar
+					isLoggedIn={this.state.isLoggedIn}
+					currentPage={this.state.currentpage}
+					updateCurrentPage={this.updateCurrentPage}
+					logout={this.logout}
+					/>
+			</div>
+		);
+	}// _renderTopbar
+
+	_renderSidebar() {
+		return (
+			<div className="sidebar">
+			</div>
+		);
+	}// _renderSidebar
+
+	_renderMain() {
+		let props = {};
+		switch (this.state.currentPage) {
+			case (CONSTANTS.PAGES.LOGIN) : {
+				props = {
+					login : this.login,
+					errorMessage : this.state.errorMessage
+				};
+				break;
+			}
+			case (CONSTANTS.PAGES.HOME) : {
+				props = {
+					searchProducts : this.searchProducts,
+					inventory : this.state.database.inventory,
+					updateInventory : this.updateInventory
+				};
+				break;
+			}
+			default : {
+			}
+		}// switch
+
+		const CurrentPage = this.state.pageComponents[this.state.currentPage];
+		return (
+			<div className="main">
+				<CurrentPage
+					{...props}
+					/>
+			</div>
+		);
+	}// _renderMain
+
+
+}// App
+
 export default App;

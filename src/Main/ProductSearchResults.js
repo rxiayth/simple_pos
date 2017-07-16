@@ -7,10 +7,10 @@ class ProductSearchResults extends Component {
 		return (
 			<div>
 				<select>
-				  <option value="volvo">Volvo</option>
-				  <option value="saab">Saab</option>
-				  <option value="mercedes">Mercedes</option>
-				  <option value="audi">Audi</option>
+				  <option value="volvo">Volvo.    +1.    -1</option>
+				  <option value="saab">Saab,   +1.    -1</option>
+				  <option value="mercedes">Mercedes,   +1.    -1</option>
+				  <option value="audi">Audi,   +1.    -1</option>
 				</select>
 			</div>
 		)

@@ -8,7 +8,7 @@ class Login extends Component {
         super(props);
 
         this.handleLogin.bind(this);
-    }
+    }// constructor
 
     handleLogin() {
         let name = this.refs.name.value;
@@ -17,7 +17,7 @@ class Login extends Component {
         //             "\tname = " + name + "\n" +
         //             "\tpassword = " + password);
         this.props.login(name, password);
-    }
+    }// handleLogin
 
     render() {
         return (
@@ -26,7 +26,7 @@ class Login extends Component {
                 {this._renderErrorMessage()}
             </div>
         );
-    }
+    }// render
 
     _renderLoginForm() {
         let loginStyle = {
@@ -47,7 +47,7 @@ class Login extends Component {
                     />
             </div>
         );
-    }
+    }// _renderLogInForm
 
     _renderErrorMessage() {
         return (
@@ -55,7 +55,7 @@ class Login extends Component {
                 {this.props.errorMessage}
             </div>
         );
-    }
-}
+    }// renderErrorMessage
+}// Login
 
 export default Login;

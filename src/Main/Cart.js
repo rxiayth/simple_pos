@@ -52,9 +52,10 @@ class Cart extends Component {
 					Total: ${total}
 				</div>
 
-			</div> 
-		);
+			</div>
+		) 
 	}
 }
+
 
 export default Cart;

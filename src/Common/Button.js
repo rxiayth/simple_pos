@@ -1,31 +1,32 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 class Button extends Component {
-
-    // pass as prop:
-    // style
-    //  height
-    //  width
-    //  backgroundColor
-    // function
-    // name
-
     render() {
         return (
             <div
                 style={this.props.style}
                 onClick={() => this.props.func()}
                 >
-                {this.props.name ? this.props.name : 'BUTTON'}
+                {this.props.name}
             </div>
         );
-    }
-}
+    }// render
+}// Button
 
-// Button.propTypes = {
-//     func : PropTypes.func.isRequired,
-//
-//     height : PropTypes.any.isRequired,
-//     width : PropTypes.any.isRequired,
-// }
+Button.propTypes = {
+    style : PropTypes.shape({
+        height : PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string
+        ]).isRequired,
+        width : PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string
+        ]).isRequired,
+        backgroundColor : PropTypes.string
+    }),
+    func : PropTypes.func.isRequired,
+    name : PropTypes.string.isRequired
+}// propTypes
+
 export default Button;

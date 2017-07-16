@@ -8,7 +8,7 @@ class History extends Component {
                 History
             </div>
         );
-    }
-}
+    }// render
+}// History
 
 export default History;

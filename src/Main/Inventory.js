@@ -8,7 +8,7 @@ class Inventory extends Component {
                 Inventory
             </div>
         );
-    }
-}
+    }// render
+}// Inventory
 
 export default Inventory;

@@ -8,7 +8,7 @@ class Checkout extends Component {
                 Checkout
             </div>
         );
-    }
-}
+    }// render
+}// Checkout
 
 export default Checkout;
