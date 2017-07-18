@@ -68,7 +68,7 @@ class Database {
     _queryProductsByName(searchPhrase) {
         let result = [];
         for (let sku in this.drinks) {
-            if (!this.drinks.hasOwnProperty(key)) continue;
+            if (!this.drinks.hasOwnProperty(sku)) continue;
 
             let drink = this.drinks[sku];
             if (drink.name.toLowerCase().includes(searchPhrase.toLowerCase())) {
