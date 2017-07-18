@@ -13,9 +13,7 @@ class Login extends Component {
     handleLogin() {
         let name = this.refs.name.value;
         let password = this.refs.password.value;
-        // console.log("LOGIN.JS - handleOnClick \n" +
-        //             "\tname = " + name + "\n" +
-        //             "\tpassword = " + password);
+
         this.props.login(name, password);
     }// handleLogin
 

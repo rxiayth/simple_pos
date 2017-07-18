@@ -96,13 +96,6 @@ class App extends Component {
 		);
 	}// _renderTopbar
 
-	_renderSidebar() {
-		return (
-			<div className="sidebar">
-			</div>
-		);
-	}// _renderSidebar
-
 	_renderMain() {
 		let props = {};
 		switch (this.state.currentPage) {
@@ -136,7 +129,13 @@ class App extends Component {
 		);
 	}// _renderMain
 
-
+	_renderSidebar() {
+			return (
+			<div className="sidebar">
+			</div>
+		);
+	}// _renderSidebar
+	
 }// App
 
 export default App;

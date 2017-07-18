@@ -31,14 +31,13 @@ class Home extends Component {
         cart[sku] = item;
 
         this.setState({cart});
-        // odd case of volume = 0; not gonn ahave props
     }// updateCart
 
     checkout() {
-        for (let item in this.state.cart) {
-            if (!this.state.cart.hasOwnProperty(item)) continue;
-            this.props.updateInventory(item, this.state.cart[item]);
-        }
+        for (let sku in this.state.cart) {
+            if (!this.state.cart.hasOwnProperty(sku)) continue;
+            this.props.updateInventory(sku, this.state.cart[sku]);
+        };
     }// checkout
 
     render() {
@@ -50,44 +49,49 @@ class Home extends Component {
     }// render
 
     _renderCurrentPage() {
-        let result = <div></div>;
         switch (this.state.currentPage) {
             case (CONSTANTS.PAGES.PRODUCTSEARCH) : {
-                result = (
-                    <div>
-                        <ProductSearch
-                            searchProducts={this.props.searchProducts}
-                            updateCart={this.updateCart}
-                        />
-                        <Cart
-                            goToCheckOut={() =>
-                                this.updateCurrentPage(CONSTANTS.PAGES.CHECKOUT)
-                            }
-                            updateCart={this.updateCart}
-                            cart={this.state.cart}
-                        />
-                    </div>
-                );
-                break;
+                return this._renderProductSearch();
             }
             case (CONSTANTS.PAGES.CHECKOUT) : {
-                result = (
-                    <div>
-                        <Checkout
-                            goBack={() =>
-                                this.updateCurrentPage(CONSTANTS.PAGES.PRODUCTSEARCH)
-                            }
-                            checkout={this.checkout}
-                        />
-                    </div>
-                );
-                break;
+                return this._renderCheckout();
             }
             default : {
+                return <div></div>
             }
         }// switch
-        return result;
     }// _renderCurrentPage
+
+    _renderProductSearch() {
+        return (
+            <div>
+                <ProductSearch
+                    searchProducts={this.props.searchProducts}
+                    updateCart={this.updateCart}
+                />
+                <Cart
+                    goToCheckOut={() =>
+                        this.updateCurrentPage(CONSTANTS.PAGES.CHECKOUT)
+                    }
+                    updateCart={this.updateCart}
+                    cart={this.state.cart}
+                />
+            </div>
+        );
+    }// _renderProductSearch
+
+    _renderCheckout() {
+        return (
+            <div>
+                <Checkout
+                    goBack={() =>
+                        this.updateCurrentPage(CONSTANTS.PAGES.PRODUCTSEARCH)
+                    }
+                    checkout={this.checkout}
+                />
+            </div>
+        );
+    }// _renderCheckout
 }// Home
 
 export default Home;

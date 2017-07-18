@@ -31,8 +31,10 @@ class Topbar extends Component {
             textAlign: 'justify'
         }
 
-        style['unhighlightedTab'] = unhighlightedTab;
-        style['topBarStyle'] = topBarStyle;
+        style = {
+            unhighlightedTab,
+            topBarStyle
+        };
 
         this.setState({style});
     }// _loadStyle
@@ -81,7 +83,7 @@ class Topbar extends Component {
                 <Button
                     name={CONSTANTS.PAGES.LOGIN}
                     style={this.state.style.unhighlightedTab}
-                    func={() => this.handleOnClick(CONSTANTS.PAGES.LOGIN)}
+                    func={() => {}}
                 />
             </div>
         );
