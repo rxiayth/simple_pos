@@ -67,11 +67,12 @@ class Database {
 
     _queryProductsByName(searchPhrase) {
         let result = [];
-        for (let key in this.drinks) {
+        for (let sku in this.drinks) {
             if (!this.drinks.hasOwnProperty(key)) continue;
 
-            let drink = this.drinks[key];
+            let drink = this.drinks[sku];
             if (drink.name.toLowerCase().includes(searchPhrase.toLowerCase())) {
+                drink.quantity = this.inventory[sku];
                 result.push(drink);
             };
         };
@@ -80,11 +81,13 @@ class Database {
 
     _queryProductsBySku(searchPhrase) {
         let result = [];
-        for (let key in this.drinks) {
-            if (!this.drinks.hasOwnProperty(key)) continue;
+        for (let sku in this.drinks) {
+            if (!this.drinks.hasOwnProperty(sku)) continue;
 
-            if (key.includes(searchPhrase)) {
-                result.push(this.drinks[key]);
+            if (sku.includes(searchPhrase)) {
+                let drink = this.drinks[sku];
+                drink.quantity = this.inventory[sku];
+                result.push(drink);
             };
         };
         return result;
